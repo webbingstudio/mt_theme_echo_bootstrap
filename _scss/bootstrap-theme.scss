@@ -1,0 +1,804 @@
+// mixin: Keeping original file
+@import "bootstrap/mixins";
+
+// variables: Modify necessary variables
+@import "bootstrap/variables";
+
+
+// ----------------------------
+// reboot
+// ----------------------------
+
+body {
+  font-family: $font-family-base;
+  color: $body-color;
+  background-color: $body-bg;
+}
+
+
+//
+// Links
+//
+
+a {
+  color: $link-color;
+
+  @include hover-focus {
+    color: $link-hover-color;
+  }
+
+}
+
+
+// ----------------------------
+// type
+// ----------------------------
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  line-height: $headings-line-height;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-bottom: $headings-margin-bottom;
+}
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-bottom: $headings-margin-bottom;
+}
+
+h1, .h1 { font-size: $font-size-h1; }
+h2, .h2 { font-size: $font-size-h2; }
+h3, .h3 { font-size: $font-size-h3; }
+h4, .h4 { font-size: $font-size-h4; }
+h5, .h5 { font-size: $font-size-h5; }
+h6, .h6 { font-size: $font-size-h6; }
+
+.lead {
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+}
+
+// Type display classes
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+}
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+}
+.display-3 {
+  font-size: $display3-size;
+  font-weight: $display3-weight;
+}
+.display-4 {
+  font-size: $display4-size;
+  font-weight: $display4-weight;
+}
+
+
+//
+// Horizontal rules
+//
+
+hr {
+  border-top: $hr-border-width solid $hr-border-color;
+}
+
+mark,
+.mark {
+  background-color: $state-warning-bg;
+}
+
+
+//
+// Tables
+//
+
+caption {
+  caption-side: top;
+}
+
+
+// ----------------------------
+// button
+// ----------------------------
+
+//
+// Base styles
+//
+
+.btn {
+  border: $border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $line-height, $btn-border-radius);
+//  @include transition(all .2s ease-in-out);
+  transition: all .3s;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      @include tab-focus();
+    }
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+  &.focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &:disabled,
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    @include box-shadow(none);
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disaabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+
+//
+// Alternate buttons
+//
+
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+.btn-secondary {
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+}
+.btn-info {
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+.btn-success {
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+.btn-warning {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+// Remove all backgrounds
+.btn-primary-outline {
+  @include button-outline-variant($btn-primary-bg);
+}
+.btn-secondary-outline {
+  @include button-outline-variant($btn-secondary-border);
+}
+.btn-info-outline {
+  @include button-outline-variant($btn-info-bg);
+}
+.btn-success-outline {
+  @include button-outline-variant($btn-success-bg);
+}
+.btn-warning-outline {
+  @include button-outline-variant($btn-warning-bg);
+}
+.btn-danger-outline {
+  @include button-outline-variant($btn-danger-bg);
+}
+
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.btn-link {
+  font-weight: normal;
+  color: $link-color;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &.active,
+  &:disabled,
+  fieldset[disabled] & {
+    background-color: transparent;
+    @include box-shadow(none);
+  }
+  &,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  @include hover {
+    border-color: transparent;
+  }
+  @include hover-focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+    background-color: transparent;
+  }
+  &:disabled,
+  fieldset[disabled] & {
+    @include hover-focus {
+      color: $btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
+}
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
+}
+
+
+// ----------------------------
+// breadcrumb
+// ----------------------------
+
+.breadcrumb {
+  font-size: .75rem;
+  padding: $breadcrumb-padding-vertical $breadcrumb-padding-horizontal;
+  margin-bottom: 3rem;
+  background-color: $breadcrumb-bg;
+  @include border-radius($border-radius);
+
+  > li {
+
+    + li:before {
+      $nbsp: "\00a0";
+      padding-right: .5rem;
+      padding-left: .5rem;
+      color: $breadcrumb-divider-color;
+      content: "#{$breadcrumb-divider}#{$nbsp}"; // Unicode space added since inline-block means non-collapsing white-space
+    }
+  }
+
+  > .active {
+    color: $breadcrumb-active-color;
+  }
+}
+
+// ----------------------------
+// card
+// ----------------------------
+
+$card-spacer-x:            1rem;
+$card-spacer-y:            1rem;
+$card-border-width:        .0625rem;
+$card-border-radius:       .25rem;
+$card-border-color:        $gray-lighter;
+$card-border-radius-inner: .25rem;
+
+$card-cap-bg: transparent;
+
+.card {
+  position: relative;
+  background-color: $body-bg;
+  margin-bottom: $card-spacer-y;
+  padding: .5rem;
+  border: $card-border-width solid $card-border-color;
+  @include border-radius($card-border-radius);
+}
+
+.card-block {
+  padding: $card-spacer-y;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  margin-top: 0;
+}
+
+.card-subtitle {
+  margin-top: -($card-spacer-y / 2);
+  margin-bottom: 0;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+.card-link {
+  @include hover {
+    text-decoration: none;
+  }
+
+  + .card-link {
+    margin-left: $card-spacer-x;
+  }
+}
+
+@if $enable-rounded {
+  .card {
+    > .list-group:first-child {
+      .list-group-item:first-child {
+        border-radius: $card-border-radius $card-border-radius 0 0;
+      }
+    }
+
+    > .list-group:last-child {
+      .list-group-item:last-child {
+        border-radius: 0 0 $card-border-radius $card-border-radius;
+      }
+    }
+  }
+}
+
+
+//
+// Optional textual caps
+//
+
+.card-header {
+  padding: $card-spacer-y $card-spacer-x;
+  background-color: $card-cap-bg;
+
+  &:first-child {
+    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+  }
+}
+
+.card-footer {
+  padding: $card-spacer-y $card-spacer-x;
+  background-color: $card-cap-bg;
+  border-top: $card-border-width solid $card-border-color;
+
+  &:last-child {
+    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+  }
+}
+
+
+//
+// Background variations
+//
+
+.card-primary {
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+}
+.card-success {
+  background-color: $brand-success;
+  border-color: $brand-success;
+}
+.card-info {
+  background-color: $brand-info;
+  border-color: $brand-info;
+}
+.card-warning {
+  background-color: $brand-warning;
+  border-color: $brand-warning;
+}
+.card-danger {
+  background-color: $brand-danger;
+  border-color: $brand-danger;
+}
+
+
+//
+// Inverse text within a card for use with dark backgrounds
+//
+
+.card-inverse {
+  .card-header,
+  .card-footer {
+    border-bottom: .075rem solid rgba(255,255,255,.2);
+  }
+  .card-header,
+  .card-footer,
+  .card-title,
+  .card-blockquote {
+    color: #fff;
+  }
+  .card-link,
+  .card-text,
+  .card-blockquote > footer {
+    color: rgba(255,255,255,.65);
+  }
+  .card-link {
+    @include hover-focus {
+      color: #fff;
+    }
+  }
+}
+
+
+//
+// Blockquote
+//
+
+.card-blockquote {
+  padding: 0;
+  margin-bottom: 0;
+  border-left: 0;
+}
+
+// Card image
+.card-img {
+  @include border-radius(.25rem);
+}
+
+// Card image caps
+.card-img-top {
+  @include border-radius(.25rem .25rem 0 0);
+}
+.card-img-bottom {
+  @include border-radius(0 0 .25rem .25rem);
+}
+
+
+//
+// Card groups
+//
+
+.card-group {
+
+  .card {
+
+    // Handle rounded corners
+    @if $enable-rounded {
+      &:first-child {
+        .card-img-top {
+          border-top-right-radius: 0;
+        }
+        .card-img-bottom {
+          border-bottom-right-radius: 0;
+        }
+      }
+      &:last-child {
+        .card-img-top {
+          border-top-left-radius: 0;
+        }
+        .card-img-bottom {
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+
+        .card-img-top,
+        .card-img-bottom {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+
+// ----------------------------
+// media
+// ----------------------------
+
+.media-right {
+  padding-left: 1rem;
+}
+
+.media-left {
+  padding-right: 1rem;
+}
+
+.media-heading {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.media-title {
+  margin: 0;
+  padding: 0 0 .5rem;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+
+// ----------------------------
+// label
+// ----------------------------
+
+.label-default {
+  @include label-variant($label-default-bg);
+}
+
+.label-primary {
+  @include label-variant($label-primary-bg);
+}
+
+.label-success {
+  @include label-variant($label-success-bg);
+}
+
+.label-info {
+  @include label-variant($label-info-bg);
+}
+
+.label-warning {
+  @include label-variant($label-warning-bg);
+}
+
+.label-danger {
+  @include label-variant($label-danger-bg);
+}
+
+// ----------------------------
+// list-group
+// ----------------------------
+
+// Individual list items
+//
+// Use on `li`s or `div`s within the `.list-group` parent.
+
+.list-group-item {
+  background-color: $list-group-bg;
+  border: .0625rem solid $list-group-border;
+
+  &:first-child {
+    @include border-top-radius($list-group-border-radius);
+  }
+  &:last-child {
+    @include border-bottom-radius($list-group-border-radius);
+  }
+}
+
+.list-group-flush {
+  .list-group-item {
+    border-width: .0625rem 0;
+    border-radius: 0;
+  }
+}
+
+
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive
+// list items. Includes an extra `.active` modifier class for selected items.
+
+a.list-group-item,
+button.list-group-item {
+  color: $list-group-link-color;
+
+  .list-group-item-heading {
+    color: $list-group-link-heading-color;
+  }
+
+  // Hover state
+  @include hover-focus {
+    color: $list-group-link-hover-color;
+    background-color: $list-group-hover-bg;
+  }
+}
+
+.list-group-item {
+  // Disabled state
+  &.disabled {
+    @include plain-hover-focus {
+      color: $list-group-disabled-color;
+      background-color: $list-group-disabled-bg;
+
+      .list-group-item-text {
+        color: $list-group-disabled-text-color;
+      }
+    }
+  }
+
+  // Active class on item itself, not parent
+  &.active {
+    @include plain-hover-focus {
+      color: $list-group-active-color;
+      background-color: $list-group-active-bg;
+      border-color: $list-group-active-border;
+
+      .list-group-item-text {
+        color: $list-group-active-text-color;
+      }
+    }
+  }
+}
+
+
+// Contextual variants
+//
+// Add modifier classes to change text and background color on individual items.
+// Organizationally, this must come after the `:hover` states.
+
+@include list-group-item-variant(success, $state-success-bg, $state-success-text);
+@include list-group-item-variant(info, $state-info-bg, $state-info-text);
+@include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
+@include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
+
+
+
+// ----------------------------
+// pager
+// ----------------------------
+
+.pager {
+  padding-left: 0;
+  margin-top: $spacer-y;
+  margin-bottom: $spacer-y;
+  text-align: center;
+  list-style: none;
+  @include clearfix();
+
+  li {
+    display: inline;
+
+    > a,
+    > span {
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: $pager-bg;
+      border: 1px solid $pager-border;
+      border-radius: $pager-border-radius;
+    }
+
+    > a {
+      @include hover-focus {
+        text-decoration: none;
+        background-color: $pager-hover-bg;
+      }
+    }
+  }
+
+  .disabled {
+    > a {
+      @include plain-hover-focus {
+        color: $pager-disabled-color;
+        cursor: $cursor-disabled;
+        background-color: $pager-bg;
+      }
+    }
+    > span {
+      color: $pager-disabled-color;
+      cursor: $cursor-disabled;
+      background-color: $pager-bg;
+    }
+  }
+}
+
+.pager-next {
+  > a,
+  > span {
+    float: right;
+  }
+}
+
+.pager-prev {
+  > a,
+  > span {
+    float: left;
+  }
+}
+
+
+// ----------------------------
+// pagination
+// ----------------------------
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin-top: $spacer-y;
+  margin-bottom: $spacer-y;
+  @include border-radius();
+
+  > li {
+    display: inline; // Remove list-style and block-level defaults
+
+    > a,
+    > span {
+      position: relative;
+      float: left; // Collapse white-space
+      padding: $pagination-padding-y $pagination-padding-x;
+      margin-left: -1px;
+      line-height: $line-height;
+      color: $pagination-color;
+      text-decoration: none;
+      background-color: $pagination-bg;
+      border: 1px solid $pagination-border;
+    }
+    &:first-child {
+      > a,
+      > span {
+        margin-left: 0;
+        @include border-left-radius($border-radius);
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        @include border-right-radius($border-radius);
+      }
+    }
+  }
+
+  > li > a,
+  > li > span {
+    @include hover-focus {
+      color: $pagination-hover-color;
+      background-color: $pagination-hover-bg;
+      border-color: $pagination-hover-border;
+    }
+  }
+
+  > .active > a,
+  > .active > span {
+    @include plain-hover-focus {
+      z-index: 2;
+      color: $pagination-active-color;
+      cursor: default;
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border;
+    }
+  }
+
+  > .disabled {
+    > span,
+    > a {
+      @include plain-hover-focus {
+        color: $pagination-disabled-color;
+        cursor: $cursor-disabled;
+        background-color: $pagination-disabled-bg;
+        border-color: $pagination-disabled-border;
+      }
+    }
+  }
+}
+
+
+//
+// Sizing
+//
+
+.pagination-lg {
+  @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $line-height-lg, $border-radius-lg);
+}
+
+.pagination-sm {
+  @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
+}
+
+
+// ----------------------------
+// tab
+// ----------------------------
+
+//
+// Tabbable tabs
+//
+
+.tab-content {
+
+  padding: 1rem;
+
+}
+
+
+
