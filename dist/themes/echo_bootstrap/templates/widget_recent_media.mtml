@@ -1,0 +1,37 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-ブログ新着-メディア
+# 
+# =======================
+</mt:Ignore>
+<mt:Entries category="NOT xxx" sort_by="authored_on" sort_order="descend" limit="5">
+<mt:EntriesHeader>
+<div class="card widget widget-recent-media">
+    <div class="card-header clearfix">
+        <mt:If name="__is_sub__" eq="1">
+        <p class="card-title pull-left">ブログ</p>
+        <ul class="list-inline pull-right">
+            <li><a href="<mt:Link template="blog_index" />" class="btn btn-sm btn-secondary">一覧へ</a></li>
+        </ul>
+        <mt:Else>
+        <h2 class="card-title pull-left">ブログ</h2>
+        <ul class="list-inline pull-right">
+            <li><a href="<mt:Link template="blog_index" />" class="btn btn-sm btn-primary">一覧へ</a></li>
+        </ul>
+        </mt:If>
+    </div>
+    <div class="card-block">
+</mt:EntriesHeader>
+
+        <mt:If name="__is_sub__" eq="1">
+        <mt:Include module="記事ループ-メディア" tag="p" />
+        <mt:Else>
+        <mt:Include module="記事ループ-メディア" />
+        </mt:If>
+
+<mt:EntriesFooter>
+    <!-- /.card-block --></div>
+<!-- /.card widget --></div>
+</mt:EntriesFooter>
+</mt:Entries>

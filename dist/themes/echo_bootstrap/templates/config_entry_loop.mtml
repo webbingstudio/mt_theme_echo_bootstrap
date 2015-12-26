@@ -1,0 +1,57 @@
+<mt:Ignore>
+# =======================
+# 
+# コンフィグ-記事ループ
+# 
+# =======================
+</mt:Ignore>
+
+<mt:Ignore>
+# -----------------------
+# Post
+# -----------------------
+</mt:Ignore>
+<mt:EntryID setvar="ec_post_id" note="記事のID" />
+<mt:EntryBasename setvar="ec_post_basename" note="記事のベースネーム" />
+<mt:EcEntryLinkUrl setvar="ec_post_link_url" note="リンク先URLが指定されている場合のURL" />
+
+<mt:Ignore>
+# -----------------------
+# Taxonomy(Category)
+# -----------------------
+</mt:Ignore>
+
+<mt:TemplateNote value="カテゴリー情報に一旦空の値を代入" />
+<mt:SetVar name="ec_taxonomy_basename" value="" note="カテゴリーのベースネーム" />
+<mt:SetVar name="ec_taxonomy_label" value="" note="カテゴリーの表示名" />
+<mt:SetVar name="ec_taxonomy_path" value="" note="カテゴリーのパス" />
+
+<mt:TemplateNote value="主カテゴリーの情報" />
+<mt:EntryPrimaryCategory>
+    <mt:CategoryBasename setvar="ec_taxonomy_basename" />
+    <mt:CategoryLabel encode_html="1" setvar="ec_taxonomy_label" />
+    <mt:CategoryArchiveLink setvar="ec_taxonomy_path" />
+</mt:EntryPrimaryCategory>
+
+<mt:Ignore>
+# -----------------------
+# Share
+# -----------------------
+</mt:Ignore>
+
+<mt:TemplateNote value="SNSボタンでシェアしたときのタイトル: サイトの方針により略記を使用したり、媒体によって文言を変更するケースがあるため、別変数としている" />
+    <mt:If tag="EcEntryMetaTitle" note="METAのタイトルが別途指定されていれば">
+        <mt:EcEntryMetaTitle encode_html="1" setvar="ec_share_title" />
+    <mt:Else>
+        <mt:SetVarBlock name="ec_share_title"><mt:EntryTitle encode_html="1" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+    </mt:If>
+
+<mt:TemplateNote value="SNSボタンでシェアしたときのURL: サイトの方針により末尾にクエリを付与するケースがあるため、別変数としている" />
+    <mt:EntryPermalink setvar="ec_share_url" />
+
+<mt:TemplateNote value="SNSボタンでシェアしたときの画像: Pinterestボタンのみが参照している変数。Pinterestボタンを利用しない場合は削除してよい" />
+<mt:If tag="EcEntryEyecatch">
+    <mt:EcEntryEyecatchAsset>
+        <mt:AssetURL setvar="ec_meta_eyecatch" />
+    </mt:EcEntryEyecatchAsset>
+</mt:If>

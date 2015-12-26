@@ -1,0 +1,137 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n"><mt:Ignore>
+# =======================
+# 
+# ブログトップページ
+# 
+# 直近20件を表示する
+# 
+# =======================
+</mt:Ignore>
+<!DOCTYPE html>
+<html lang="<mt:BlogLanguage />">
+<head>
+<mt:Include module="コンフィグ-共通" />
+<mt:Include module="コンフィグ-ブログトップページ" />
+<mt:Include module="head要素" />
+</head>
+<body class="<mt:Var name="ec_body_class" />">
+<mt:Include module="ヘッダ" />
+<mt:Include module="ナビ-グローバルナビ" />
+
+<div class="contents">
+
+    <div class="contents-header">
+        <div class="container">
+            <h1 class="contents-header-title"><mt:Var name="ec_blog_contents_label" /></h1>
+        <!-- /.container --></div>
+    <!-- /.contents-header --></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-lg-9">
+                <main class="main" role="main">
+
+                    <mt:WidgetSet name="コンテンツ-本文の前-ブログ" />
+
+                    <mt:Entries sort_by="authored_on" sort_order="descend" limit="20">
+
+                        <mt:EntriesHeader>
+                        <div class="archive-list archive-list-<mt:Var name="ec_component" />">
+                                <mt:If name="ec_component" eq="card">
+                                <div class="row js-flatheight">
+                                </mt:If>
+                        </mt:EntriesHeader>
+
+                        <mt:If name="ec_component" eq="body">
+                            <mt:Include module="コンフィグ-記事ループ" />
+                            <mt:Include module="記事ループ-本文" />
+                        <mt:ElseIf eq="card">
+                            <div class="col-sm-4">
+                            <mt:Include module="記事ループ-カード" />
+                            <!-- /.col-sm-4 --></div>
+                        <mt:ElseIf eq="headline">
+                            <mt:Include module="記事ループ-ヘッドライン" />
+                        <mt:ElseIf eq="listgroup">
+                            <mt:Include module="記事ループ-リストグループ" date="0" />
+                        <mt:ElseIf eq="none">
+                            <mt:Include module="記事ループ-装飾なし" />
+                        <mt:Else>
+                            <mt:Include module="記事ループ-メディア" />
+                        </mt:If>
+
+                        <mt:SetVarBlock name="__post_par__"><mt:Var name="__counter__" op="%" value="3" /></mt:SetVarBlock>
+                        <mt:If name="ec_component" eq="card">
+                            <mt:If name="__post_par__" eq="0">
+                                <!-- /.row --></div>
+                                <div class="row js-flatheight">
+                            </mt:If>
+                        </mt:If>
+
+                        <mt:EntriesFooter>
+                                <mt:If name="ec_component" eq="card">
+                                <!-- /.row --></div>
+                                </mt:If>
+                        <!-- /.archive-list --></div>
+                        </mt:EntriesFooter>
+
+                    </mt:Entries>
+
+                    <mt:SetVar name="__topicpath_count__" value="0" />
+                    <nav class="topicpath">
+                        <ol class="breadcrumb"<mt:Var name="ec_itemscope_ol">>
+
+                            <li<mt:Var name="ec_itemscope_li">>
+                                <a href="<mt:Var name="ec_website_path" />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_breadcrumb_home_label" encode_html="1" /></span></a>
+                                <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+                                <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+                            </li>
+
+                            <mt:IfWebsite note="ブログであればブログトップへのリンクを追加">
+                            <mt:Else>
+                            <li<mt:Var name="ec_itemscope_li">>
+                                <a href="<mt:BlogRelativeURL />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:BlogName encode_html="1" /></span></a>
+                                <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+                                <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+                            </li>
+                            </mt:IfWebsite>
+
+                            <li class="active"<mt:Var name="ec_itemscope_li">>
+                                <span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_blog_contents_label" /></span>
+                                <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+                                <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+                            </li>
+
+                        </ol>
+                    </nav>
+
+                    <mt:WidgetSet name="コンテンツ-本文の後-ブログ" />
+
+                </main>
+            <!-- /.col-md-12 col-lg-9 --></div>
+
+            <div class="col-md-12 col-lg-3">
+                <div class="sub">
+                    <mt:Var name="__is_sub__" value="1" />
+                    <mt:WidgetSet name="サブメニュー-ブログ" />
+                    <mt:Var name="__is_sub__" value="0" />
+                <!-- /.sub --></div>
+            <!-- /.col-md-12 col-lg-3 --></div>
+
+        <!-- /.row --></div>
+    <!-- /.container --></div>
+
+    <div class="section section-03">
+        <div class="container">
+            <mt:WidgetSet name="コンテンツ-下段" />
+        <!-- /.container --></div>
+    <!-- /.section section-03 --></div>
+
+<!-- /.contents --></div>
+
+<mt:Include module="フッタ" />
+<mt:Include module="デバッグ-アーカイブ" />
+
+</body>
+</html>
+</mt:Unless>

@@ -1,0 +1,153 @@
+<mt:Ignore>
+# =======================
+# 
+# コンフィグ-アーカイブ
+# 
+# =======================
+</mt:Ignore>
+
+<mt:Ignore>
+# -----------------------
+# Archive
+# -----------------------
+</mt:Ignore>
+<mt:ArchiveType setvar="ec_archive_type" note="アーカイブタイプ" />
+
+<mt:If name="ec_archive_type" like="Category" note="カテゴリー関連のとき">
+    <mt:ArchiveTitle setvar="ec_archive_title" note="アーカイブタイトル" />
+<mt:Else>
+    <mt:ArchiveTitle cat="の記事一覧" setvar="ec_archive_title" />
+</mt:If>
+
+<mt:If name="ec_archive_type" like="Category" note="カテゴリー関連のとき">
+    <mt:Ignore>
+    # -----------------------
+    # Taxonomy(Category)
+    # 
+    # ローカル変数:
+    #   __is_ancestor__
+    # -----------------------
+    </mt:Ignore>
+    <mt:TemplateNote value="現在のカテゴリー情報" />
+        <mt:CategoryBasename setvar="ec_taxonomy_basename" note="カテゴリーのベースネーム（フォルダ名）" />
+        <mt:CategoryLabel encode_html="1" setvar="ec_taxonomy_label" note="カテゴリーの表示名" />
+        <mt:CategoryArchiveLink setvar="ec_taxonomy_link" note="カテゴリーアーカイブの完全なURL" />
+
+    <mt:TemplateNote value="親カテゴリー情報を一旦現在のカテゴリー情報と同一にする" />
+        <mt:Var name="ec_taxonomy_basename" setvar="ec_taxonomy_parent_basename" note="親カテゴリーのベースネーム（フォルダ名）" />
+        <mt:Var name="ec_taxonomy_label" setvar="ec_taxonomy_parent_label" note="親カテゴリーの表示名" />
+        <mt:Var name="ec_taxonomy_link" setvar="ec_taxonomy_parent_link" note="親カテゴリーの完全なURL" />
+
+    <mt:TemplateNote value="先祖カテゴリー情報を一旦現在のカテゴリー情報と同一にする" />
+        <mt:Var name="ec_taxonomy_basename" setvar="ec_taxonomy_ancestor_basename" note="先祖カテゴリーのベースネーム（フォルダ名）" />
+        <mt:Var name="ec_taxonomy_label" setvar="ec_taxonomy_ancestor_label" note="先祖カテゴリーの表示名" />
+        <mt:Var name="ec_taxonomy_link" setvar="ec_taxonomy_ancestor_link" note="先祖カテゴリーの完全なURL" />
+
+    <mt:SetVar name="__is_ancestor__" value="0" />
+    <mt:ParentCategories exclude_current="1" note="親・先祖カテゴリーを取得する">
+        <mt:If name="__is_ancestor__" eq="0" value="先祖カテゴリー情報をまだ取得していなければ">
+            <mt:CategoryBasename setvar="ec_taxonomy_ancestor_basename" />
+            <mt:CategoryLabel encode_html="1" setvar="ec_taxonomy_ancestor_label" />
+            <mt:CategoryArchiveLink setvar="ec_taxonomy_ancestor_link" />
+            <mt:SetVar name="__is_ancestor__" value="1" />
+        </mt:If>
+        <mt:CategoryBasename setvar="ec_taxonomy_parent_basename" />
+        <mt:CategoryLabel encode_html="1" setvar="ec_taxonomy_parent_label" />
+        <mt:CategoryArchiveLink setvar="ec_taxonomy_parent_link" />
+    </mt:ParentCategories>
+</mt:If>
+
+<mt:If name="ec_archive_type" like="Author" note="著者関連のとき">
+    <mt:Ignore>
+    # -----------------------
+    # Taxonomy(Author)
+    # -----------------------
+    </mt:Ignore>
+    <mt:AuthorID setvar="ec_taxonomy_basename" note="著者のベースネーム（IDを取得）" />
+    <mt:AuthorDisplayName encode_html="1" setvar="ec_taxonomy_label" note="著者名" />
+    <mt:ArchiveLink setvar="ec_taxonomy_link" note="著者アーカイブの完全なURL" />
+</mt:If>
+
+<mt:If name="ec_archive_type" like="Category" note="カテゴリー関連のとき">
+    <mt:Ignore>
+    # -----------------------
+    # META(Category)
+    # -----------------------
+    </mt:Ignore>
+    <mt:SetVarBlock name="ec_meta_title" note="接尾辞を除くtitle要素"><mt:Var name="ec_taxonomy_label" /><mt:Unless name="ec_taxonomy_basename" eq="$ec_taxonomy_ancestor_basename"> | <mt:Var name="ec_taxonomy_ancestor_label" /></mt:Unless> | <mt:Var name="ec_blog_contents_label" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+
+    <mt:If tag="CategoryDescription" note="カテゴリー説明文が指定されていれば">
+        <mt:SetVarBlock name="ec_meta_description" note="概要"><mt:CategoryDescription remove_html="1" encode_html="1" /></mt:SetVarBlock>
+    <mt:Else>
+        <mt:SetVarBlock name="ec_meta_description" note="概要">カテゴリー「<mt:CategoryLabel encode_html="1" />」の新着一覧です。</mt:SetVarBlock>
+    </mt:If>
+
+    <mt:Var name="ec_taxonomy_label" setvar="ec_meta_category" note="分類" />
+    <mt:If tag="EcCategoryEyecatch" note="アイキャッチ画像が指定されていれば">
+        <mt:EcCategoryEyecatchAsset>
+            <mt:AssetURL setvar="ec_meta_eyecatch" note="アイキャッチ画像" />
+        </mt:EcCategoryEyecatchAsset>
+    </mt:If>
+
+</mt:If>
+
+<mt:Unless name="ec_archive_type" like="Category" note="カテゴリー関連ではないとき">
+    <mt:Ignore>
+    # -----------------------
+    # META(not Category)
+    # -----------------------
+    </mt:Ignore>
+    <mt:SetVarBlock name="ec_meta_title" note="接尾辞を除くtitle要素"><mt:Var name="ec_archive_title" /> | <mt:Var name="ec_blog_contents_label" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+</mt:Unless>
+
+<mt:Ignore>
+# -----------------------
+# META(Common)
+# -----------------------
+</mt:Ignore>
+<mt:ArchiveLink setvar="ec_meta_permalink" note="完全なURL" />
+<mt:Date format_name="iso8601" setvar="ec_meta_publish" note="再構築された時点のタイムスタンプ" />
+
+<mt:If name="ec_archive_type" like="Category" note="カテゴリー関連のとき">
+    <mt:Ignore>
+    # -----------------------
+    # Others(Category)
+    # -----------------------
+    </mt:Ignore>
+    <mt:SetVarBlock name="ec_body_class" note="body要素のクラス名">blog archive <mt:ArchiveType lower_case="1" /> category-<mt:Var name="ec_taxonomy_id" /><mt:Unless name="ec_taxonomy_basename" eq=""> taxonomy-<mt:Var name="ec_taxonomy_basename" /></mt:Unless><mt:Unless name="ec_taxonomy_parent_basename" eq="$ec_taxonomy_basename"> taxonomy-<mt:Var name="ec_taxonomy_parent_basename" /></mt:Unless><mt:Unless name="ec_taxonomy_ancestor_basename" eq="$ec_taxonomy_parent_basename"> taxonomy-<mt:Var name="ec_taxonomy_ancestor_basename" /></mt:Unless></mt:SetVarBlock>
+    <mt:If tag="EcCategoryComponent" note="カテゴリー独自のコンポーネントが指定されていれば">
+        <mt:Unless tag="EcCategoryComponent" eq="指定しない" note="かつ「指定しない」を選択していなければ">
+            <mt:EcCategoryComponent setvar="ec_component" note="記事のコンポーネント" />
+        </mt:Unless>
+    </mt:If>
+</mt:If>
+
+<mt:If name="datebased_archive" eq="1" note="時系列アーカイブのとき">
+    <mt:Ignore>
+    # -----------------------
+    # Others(Datebased Archive)
+    # -----------------------
+    </mt:Ignore>
+    <mt:SetVarBlock name="ec_body_class" note="body要素のクラス名">blog archive <mt:ArchiveType lower_case="1" /></mt:SetVarBlock>
+</mt:If>
+
+<mt:If name="ec_archive_type" like="Author" note="著者関連のとき">
+    <mt:Ignore>
+    # -----------------------
+    # Others(Author)
+    # -----------------------
+    </mt:Ignore>
+    <mt:SetVarBlock name="ec_body_class" note="body要素のクラス名">blog archive <mt:ArchiveType lower_case="1" /> author-<mt:Var name="ec_taxonomy_id" /></mt:SetVarBlock>
+</mt:If>
+
+<mt:Ignore>
+# -----------------------
+# Others(Common)
+# -----------------------
+</mt:Ignore>
+<mt:TemplateNote value="コンポーネントがヘッドライン・リストグループのときは1ページの件数を増やす" />
+    <mt:If name="ec_component" eq="headline">
+        <mt:SetVarBlock name="ec_search_count"><mt:Var name="ec_search_count" op="*" value="3" /></mt:SetVarBlock>
+    <mt:ElseIf eq="listgroup">
+        <mt:SetVarBlock name="ec_search_count"><mt:Var name="ec_search_count" op="*" value="3" /></mt:SetVarBlock>
+    </mt:If>

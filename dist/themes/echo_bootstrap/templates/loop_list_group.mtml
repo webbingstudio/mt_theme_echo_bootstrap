@@ -1,0 +1,35 @@
+<mt:Ignore>
+# =======================
+# 
+# 記事ループ-リストグループ
+# 
+# 使い方:
+#   <mt:Include module="記事ループ-リストグループ" date="0" flush="0" />
+# 
+# モディファイアの基本値:
+#   date = 1
+#   flush = 1
+# 
+# =======================
+</mt:Ignore>
+<mt:Unless name="date" eq="0">
+    <mt:SetVar name="date" value="1" />
+</mt:Unless>
+<mt:Unless name="flush" eq="0">
+    <mt:SetVar name="flush" value="1" />
+</mt:Unless>
+
+<mt:If name="__first__">
+<div class="list-group<mt:If name="flush" eq="1"> list-group-flush"</mt:If>>
+</mt:If>
+
+    <a href="<mt:If tag="EcEntryLinkUrl"><mt:EcEntryLinkUrl /><mt:Else><mt:EntryPermalink /></mt:If>" class="list-group-item post-<mt:EntryID />">
+        <mt:If name="date" eq="1">
+        <small><mt:EntryDate language="en" format="$ec_entry_date" /></small><br>
+        </mt:If>
+        <mt:EntryTitle encode_html="1" />
+    </a>
+
+<mt:If name="__last__">
+<!-- /.list-group --></div>
+</mt:If>

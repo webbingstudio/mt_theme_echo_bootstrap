@@ -1,0 +1,119 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n"><mt:Ignore>
+# =======================
+# 
+# ページ
+# 
+# =======================
+</mt:Ignore>
+<!DOCTYPE html>
+<html lang="<mt:BlogLanguage />">
+<head>
+<mt:Include module="コンフィグ-共通" />
+<mt:Include module="コンフィグ-ページ" />
+<mt:Include module="head要素" />
+<mt:If name="ec_meta_noindex" eq="1">
+<meta name="robots" content="noindex">
+</mt:If>
+<mt:EcPageHtmlHead />
+</head>
+<body class="<mt:Var name="ec_body_class" />">
+<mt:Include module="ヘッダ" />
+<mt:Include module="ナビ-グローバルナビ" />
+
+<div class="contents">
+
+    <mt:Unless name="ec_page_layout" eq="none">
+    <mt:Unless name="ec_taxonomy_basename" eq="">
+    <div class="contents-header">
+        <div class="container">
+            <mt:If name="ec_taxonomy_basename" eq="$ec_taxonomy_ancestor_basename">
+                <mt:If name="ec_post_basename" eq="index">
+                <h1 class="contents-header-title"><mt:Var name="ec_taxonomy_ancestor_label" /></h1>
+                <mt:Else>
+                <p class="contents-header-title"><mt:Var name="ec_taxonomy_ancestor_label" /></p>
+                </mt:If>
+            <mt:Else>
+            <p class="contents-header-title"><mt:Var name="ec_taxonomy_ancestor_label" /></p>
+            </mt:If>
+        <!-- /.container --></div>
+    <!-- /.contents-header --></div>
+    </mt:Unless>
+    </mt:Unless>
+
+    <mt:Unless name="ec_page_layout" eq="none">
+    <div class="container">
+        <div class="row">
+    </mt:Unless>
+
+        <mt:If name="ec_page_layout" eq="col2">
+            <div class="col-md-12 col-lg-9">
+        </mt:If>
+        <mt:If name="ec_page_layout" eq="col1">
+            <div class="col-md-12 col-lg-10 col-lg-push-1">
+        </mt:If>
+                <main class="main" role="main">
+
+                    <mt:Unless name="ec_page_layout" eq="none">
+                    <mt:WidgetSet name="コンテンツ-本文の前-ページ" />
+                    </mt:Unless>
+
+                    <div class="post">
+
+                        <mt:Unless name="ec_page_layout" eq="none">
+                        <div class="post-header">
+                            <h1 class="post-header-title"><mt:PageTitle encode_html="1" /></h1>
+                        <!-- /.page-header --></div>
+                        </mt:Unless>
+
+                        <div class="post-contents">
+                            <mt:PageBody mteval="1" />
+                            <mt:PageMore mteval="1" />
+                        <!-- /.post-contents --></div>
+
+                    <!-- /.post --></div>
+
+                    <mt:Unless name="ec_page_layout" eq="none">
+                    <mt:Include module="トピックパス-記事・ページ" />
+                    </mt:Unless>
+
+                    <mt:Unless name="ec_page_layout" eq="none">
+                    <mt:WidgetSet name="コンテンツ-本文の後-ページ" />
+                    </mt:Unless>
+
+                </main>
+            <!-- /.col --></div>
+
+        <mt:Unless name="ec_page_layout" eq="none">
+            <mt:If name="ec_page_layout" eq="col2">
+            <div class="col-md-12 col-lg-3">
+            </mt:If>
+            <mt:If name="ec_page_layout" eq="col1">
+            <div class="col-md-12 col-lg-10 col-lg-push-1">
+            </mt:If>
+                <div class="sub">
+                    <mt:Var name="__is_sub__" value="1" />
+                    <mt:WidgetSet name="サブメニュー-ページ" />
+                    <mt:Var name="__is_sub__" value="0" />
+                <!-- /.sub --></div>
+            <!-- /.col --></div>
+        </mt:Unless>
+
+    <mt:Unless name="ec_page_layout" eq="none">
+        <!-- /.row --></div>
+    <!-- /.container --></div>
+    </mt:Unless>
+
+    <div class="section section-03">
+        <div class="container">
+            <mt:WidgetSet name="コンテンツ-下段" />
+        <!-- /.container --></div>
+    <!-- /.section section-03 --></div>
+
+<!-- /.contents --></div>
+
+<mt:Include module="フッタ" />
+<mt:Include module="デバッグ-ページ" />
+
+</body>
+</html>
+</mt:Unless>

@@ -1,0 +1,70 @@
+<mt:Ignore>
+# =======================
+# 
+# パーツ-関連記事
+# 
+# モディファイアの基本値:
+#   taxonomy = $ec_taxonomy_label
+#   limit = 3
+#   layout = media
+#
+# =======================
+</mt:Ignore>
+<mt:Unless name="taxonomy">
+    <mt:Var name="ec_taxonomy_label" setvar="taxonomy" />
+</mt:Unless>
+<mt:Unless name="limit">
+    <mt:SetVar name="limit" value="3" />
+</mt:Unless>
+<mt:Unless name="layout">
+    <mt:SetVar name="layout" value="media" />
+</mt:Unless>
+
+<mt:Entries id="$ec_post_id"></mt:Entries>
+<mt:Entries category="$taxonomy" include_subcategories="1" sort_by="authored_on" sort_order="descend" unique="1" limit="$limit">
+<mt:EntriesHeader>
+<div class="similar">
+    <div class="similar-header">
+        <h2 class="similar-title">関連記事</h2>
+    <!-- /.similar-header --></div>
+
+    <div class="similar-contents">
+        <mt:If name="layout" eq="card">
+        <div class="row js-flatheight">
+        </mt:If>
+</mt:EntriesHeader>
+
+    <mt:If name="layout" eq="body">
+        <mt:Include module="コンフィグ-記事ループ" />
+        <mt:Include module="記事ループ-本文" />
+    <mt:ElseIf eq="card">
+        <div class="col-sm-4">
+        <mt:Include module="記事ループ-カード" />
+        <!-- /.col-sm-4 --></div>
+    <mt:ElseIf eq="headline">
+        <mt:Include module="記事ループ-ヘッドライン" />
+    <mt:ElseIf eq="listgroup">
+        <mt:Include module="記事ループ-リストグループ" />
+    <mt:ElseIf eq="none">
+        <mt:Include module="コンフィグ-記事ループ" />
+        <mt:Include module="記事ループ-装飾なし" />
+    <mt:Else>
+        <mt:Include module="記事ループ-メディア" />
+    </mt:If>
+
+<mt:SetVarBlock name="__post_par__"><mt:Var name="__counter__" op="%" value="3" /></mt:SetVarBlock>
+<mt:If name="layout" eq="card">
+    <mt:If name="__post_par__" eq="0">
+        <!-- /.row --></div>
+        <div class="row">
+    </mt:If>
+</mt:If>
+
+<mt:EntriesFooter>
+        <mt:If name="layout" eq="card">
+        <!-- /.row --></div>
+        </mt:If>
+    <!-- /.similar-contents --></div>
+<!-- /.similar --></div>
+</mt:EntriesFooter>
+</mt:Entries>

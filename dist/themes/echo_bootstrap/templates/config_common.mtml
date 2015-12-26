@@ -1,0 +1,133 @@
+<mt:Ignore>
+# =======================
+# 
+# コンフィグ-共通
+# 
+# =======================
+</mt:Ignore>
+
+<mt:SetVar name="ec_debug" value="1" note="デバッグモード" />
+
+<mt:Ignore>
+# -----------------------
+# フォーマット
+# -----------------------
+</mt:Ignore>
+
+<mt:SetVar name="ec_search_count" value="6" note="一覧の1ページあたりの件数: リスト関連では2倍になる" />
+<mt:SetVar name="ec_blog_contents_label" value="ブログ" note="記事コンテンツの名称: ブログ、新着情報など" />
+<mt:SetVar name="ec_breadcrumb_home_label" value="ホーム" note="トピックパスの起点の名称" />
+<mt:SetVar name="ec_entry_date" note="記事の年月日フォーマット" value="%Y-%m-%d" />
+<mt:SetVar name="ec_entry_time" note="記事の時分秒フォーマット" value="%H:%m:%S" />
+
+<mt:Ignore>
+# -----------------------
+# ウェブサイト情報
+# -----------------------
+</mt:Ignore>
+<mt:BlogParentWebsite note="所属ウェブサイトの情報を参照する">
+
+    <mt:WebsiteName encode_html="1" setvar="ec_website_name" note="ウェブサイト名" />
+
+    <mt:If tag="EcWebsiteCommonTitle" note="サイト名の略称が指定されていれば">
+        <mt:SetVarBlock name="ec_website_suffix" note="title要素の接尾辞"> | <mt:EcWebsiteCommonTitle encode_html="1" /></mt:SetVarBlock>
+     <mt:Else>
+        <mt:SetVarBlock name="ec_website_suffix" note="title要素の接尾辞"> | <mt:Var name="ec_website_name" /></mt:SetVarBlock>
+    </mt:If>
+
+    <mt:WebsiteDescription remove_html="1" encode_html="1" setvar="ec_website_description" note="ウェブサイトの概要" />
+    <mt:WebsiteRelativeURL setvar="ec_website_path" note="ウェブサイトのサーバー相対パス" />
+    <mt:WebsitePath setvar="ec_website_fullpath" note="ウェブサイトのサーバーフルパス" />
+
+    <mt:If tag="EcWebsiteOgimage">
+        <mt:EcWebsiteOgimageAsset><mt:AssetThumbnailURL width="1200" setvar="ec_website_ogimage" note="ウェブサイトのog:image" /></mt:EcWebsiteOgimageAsset>
+    </mt:If>
+
+    <mt:If tag="EcWebsiteTwitter">
+        <mt:EcWebsiteTwitter setvar="ec_website_twitter" note="ウェブサイトのTwitterID" />
+    </mt:If>
+
+    <mt:If tag="EcWebsiteFbpage">
+        <mt:EcWebsiteFbpage setvar="ec_website_fbpage" note="ウェブサイトのFacebookページURL" />
+    </mt:If>
+
+    <mt:If tag="EcWebsiteFbappid">
+        <mt:EcWebsiteFbappid setvar="ec_website_fbappid" note="ウェブサイトのFacebookアプリケーションID" />
+    </mt:If>
+
+    <mt:WebsiteURL setvar="ec_website_url" note="ウェブサイトの完全なURL" />
+    <mt:EcWebsiteIndexComponent setvar="ec_component" note="記事の初期コンポーネント" />
+
+</mt:BlogParentWebsite>
+
+
+<mt:Ignore>
+# -----------------------
+# ブログ情報
+# 
+# ウェブサイト情報を上書きする
+# title要素のみ、親ウェブサイトの情報も反映する
+# -----------------------
+</mt:Ignore>
+
+<mt:IfWebsite note="ウェブサイトでなければブログ情報も参照する">
+<mt:Else>
+
+<mt:If tag="EcBlogCommonTitle" note="サイト名の略称が指定されていれば">
+    <mt:SetVarBlock name="ec_website_suffix" note="title要素の接尾辞"> | <mt:EcBlogCommonTitle encode_html="1" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+<mt:Else>
+    <mt:SetVarBlock name="ec_website_suffix" note="title要素の接尾辞"> | <mt:BlogName encode_html="1" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+</mt:If>
+
+<mt:If tag="BlogDescription">
+    <mt:BlogDescription remove_html="1" encode_html="1" setvar="ec_website_description" note="ウェブサイトの概要" />
+</mt:If>
+
+<mt:If tag="EcBlogOgimage">
+    <mt:EcBlogOgimageAsset><mt:AssetThumbnailURL width="1200" setvar="ec_website_ogimage" note="ウェブサイトのog:image" /></mt:EcBlogOgimageAsset>
+</mt:If>
+
+<mt:If tag="EcBlogTwitter">
+    <mt:EcBlogTwitter setvar="ec_website_twitter" note="ウェブサイトのTwitterID" />
+</mt:If>
+
+<mt:If tag="EcBlogFbpage">
+    <mt:EcBlogFbpage setvar="ec_website_fbpage" note="ウェブサイトのFacebookページURL" />
+</mt:If>
+
+<mt:If tag="EcBlogFbappid">
+    <mt:EcBlogFbappid setvar="ec_website_fbappid" note="ウェブサイトのFacebookアプリケーションID" />
+</mt:If>
+
+<mt:Unless tag="EcBlogIndexComponent" eq="親サイトと同じ">
+    <mt:EcBlogIndexComponent setvar="ec_component" note="記事の初期コンポーネント" />
+</mt:Unless>
+
+</mt:Else>
+</mt:IfWebsite>
+
+
+<mt:Ignore>
+# -----------------------
+# パス
+# -----------------------
+</mt:Ignore>
+
+<mt:WebsiteRelativeURL setvar="ec_static_path" note="画像、CSS等の依存ファイルのパス: 異なる階層に設置する場合は変更する" />
+
+<mt:SetVarBlock name="ec_search_path" note="検索結果のパス: PreviousLink、NextLinkがリンク切れになることがある不具合の回避">
+    <mt:AdminCGIPath /><mt:SearchScript />
+</mt:SetVarBlock>
+<mt:SetVarBlock name="ec_search_path"><mt:Var name="ec_search_path" encode_html="1" trim="1" /></mt:SetVarBlock>
+
+<mt:Ignore>
+# -----------------------
+# Itemscope
+# breadcrumb Microdata for schema.org
+# -----------------------
+</mt:Ignore>
+
+<mt:SetVar name="ec_itemscope_ol" value=' itemscope itemtype="http://schema.org/BreadcrumbList"' note="schema.orgに基づくol要素の属性" />
+<mt:SetVar name="ec_itemscope_li" value=' itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"' note="schema.orgに基づくli要素の属性" />
+<mt:SetVar name="ec_itemscope_a" value=' itemprop="item"' note="schema.orgに基づくa要素の属性" />
+<mt:SetVar name="ec_itemscope_span" value=' itemprop="name"' note="schema.orgに基づくリスト文字列の属性" />

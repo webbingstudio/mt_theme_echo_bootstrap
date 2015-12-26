@@ -1,0 +1,57 @@
+<mt:Ignore>
+# =======================
+# 
+# コンフィグ-検索結果
+# 
+# =======================
+</mt:Ignore>
+
+<mt:Ignore>
+# -----------------------
+#  Search Result
+# -----------------------
+</mt:Ignore>
+<mt:CurrentPage setvar="ec_search_current_page" note="検索結果の現在のページ数" />
+<mt:IfStraightSearch>
+    <mt:SetVarBlock name="ec_archive_title" note="アーカイブタイトル">検索結果: <mt:SearchString /></mt:SetVarBlock>
+</mt:IfStraightSearch>
+<mt:IfTagSearch>
+    <mt:SetVarBlock name="ec_archive_title" note="アーカイブタイトル">タグ: <mt:SearchString /></mt:SetVarBlock>
+</mt:IfTagSearch>
+
+<mt:SetVarBlock name="ec_search_count" value="1ページの件数: 検索結果では増やす"><mt:Var name="ec_search_count" op="*" value="2" /></mt:SetVarBlock>
+<mt:TemplateNote value="検索結果URLの生成: MT本体と公開サイトのドメインが異なっている場合、PreviousLink・NextLinkが正しくURLを生成しない仕様に対応するため、CGIパスを変数で組み上げることで回避している" />
+    <mt:SetVarBlock name="__include_blogs__"><mt:BlogParentWebsite><mt:WebsiteID /><mt:Blogs glue="," include_blogs="children">,<mt:BlogID /></mt:Blogs></mt:BlogParentWebsite></mt:SetVarBlock>
+    <mt:IfPreviousResults>
+        <mt:SetVarBlock name="ec_search_previous_page" note="検索結果のひとつ前のページ数"><mt:Var name="ec_search_current_page" op="--" /></mt:SetVarBlock>
+        <mt:IfStraightSearch>
+            <mt:SetVarBlock name="ec_search_previous_link" note="検索結果のひとつ前のURL"><mt:Var name="ec_search_path" />?search=<mt:SearchString encode_url="1" />&amp;IncludeBlogs=<mt:Var name="__include_blogs__" />&amp;limit=<mt:Var name="ec_search_count" />&amp;page=<mt:Var name="ec_search_previous_page" /></mt:SetVarBlock>
+        </mt:IfStraightSearch>
+        <mt:IfTagSearch>
+            <mt:SetVarBlock name="ec_search_previous_link" note="検索結果のひとつ前のURL"><mt:Var name="ec_search_path" />?tag=<mt:SearchString />&amp;limit=<mt:Var name="ec_search_count" />&amp;page=<mt:Var name="ec_search_previous_page" /></mt:SetVarBlock>
+        </mt:IfTagSearch>
+    </mt:IfPreviousResults>
+    <mt:IfMoreResults>
+        <mt:SetVarBlock name="ec_search_next_page" note="検索結果のひとつ後のページ数"><mt:Var name="ec_search_current_page" op="++" /></mt:SetVarBlock>
+        <mt:IfStraightSearch>
+            <mt:SetVarBlock name="ec_search_next_link" note="検索結果のひとつ後のURL"><mt:Var name="ec_search_path" />?search=<mt:SearchString encode_url="1" />&amp;IncludeBlogs=<mt:Var name="__include_blogs__" />&amp;limit=<mt:Var name="ec_search_count" />&amp;page=<mt:Var name="ec_search_next_page" /></mt:SetVarBlock>
+        </mt:IfStraightSearch>
+        <mt:IfTagSearch>
+            <mt:SetVarBlock name="ec_search_next_link" note="検索結果のひとつ後のURL"><mt:Var name="ec_search_path" />?tag=<mt:SearchString />&amp;limit=<mt:Var name="ec_search_count" />&amp;page=<mt:Var name="ec_search_next_page" /></mt:SetVarBlock>
+        </mt:IfTagSearch>
+    </mt:IfMoreResults>
+
+<mt:Ignore>
+# -----------------------
+# META
+# -----------------------
+</mt:Ignore>
+<mt:SetVarBlock name="ec_meta_title" note="接尾辞を除くtitle要素">検索結果<mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+
+<mt:Ignore>
+# -----------------------
+# Others
+# -----------------------
+</mt:Ignore>
+<mt:SetVar name="ec_body_class" value="blog search" note="body要素のクラス名" />
+

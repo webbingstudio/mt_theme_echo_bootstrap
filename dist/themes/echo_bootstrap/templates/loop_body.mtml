@@ -1,0 +1,134 @@
+<mt:Ignore>
+# =======================
+# 
+# 記事ループ-本文
+# 
+# 使い方:
+#   <mt:Include module="コンフィグ-記事ループ" />
+#   <mt:Include module="記事ループ-本文" tag="h1" date="0" sns_top="1" sns_bottom="1" />
+# 
+# モディファイアの基本値:
+#   tag = h3
+#   date = 1
+#   sns_top = 0
+#   sns_bottom = 0
+# 
+# =======================
+</mt:Ignore>
+<mt:Unless name="tag">
+    <mt:SetVar name="tag" value="h3" />
+</mt:Unless>
+<mt:Unless name="date" eq="0">
+    <mt:SetVar name="date" value="1" />
+</mt:Unless>
+<mt:Unless name="sns_top">
+    <mt:SetVar name="sns_top" value="0" />
+</mt:Unless>
+<mt:Unless name="sns_bottom">
+    <mt:SetVar name="sns_bottom" value="0" />
+</mt:Unless>
+
+<mt:Ignore>
+# SNS Button
+# ----------------------------
+</mt:Ignore>
+<mt:SetVarBlock name="ec_sns_list">
+    <ul class="list-inline">
+        <li class="post-share-item post-share-twitter">
+            <a href="http://twitter.com/share?text=<mt:Var name="ec_share_title" encode_url="1" />&amp;url=<mt:Var name="ec_share_url" /><mt:If name="ec_website_twitter">&amp;via=<mt:Var name="ec_website_twitter" />&amp;related=<mt:Var name="ec_website_twitter" /></mt:If>" rel="nofollow" target="_blank" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" class="btn btn-primary btn-twitter"><i class="fa fa-twitter"></i><span class="post-share-label">ツイート</span></a>
+        </li>
+        <li class="post-share-item post-share-facebook">
+            <a href="http://www.facebook.com/sharer.php?u=<mt:EntryPermalink encode_url="1" />" rel="nofollow" target="_blank" onClick="window.open(encodeURI(decodeURI(this.href)), 'fbwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" class="btn btn-primary btn-facebook"><i class="fa fa-facebook"></i><span class="post-share-label">シェア</span></a>
+        </li>
+        <li class="post-share-item post-share-fblike">
+            <div class="fb-like" data-href="<mt:EntryPermalink />" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        </li>
+        <li class="post-share-item post-share-line">
+            <a href="http://line.me/R/msg/text/?<mt:Var name="ec_share_title" encode_url="1" />%0D%0A<mt:Var name="ec_share_url" encode_url="1" />" rel="nofollow" target="_blank" class="btn btn-primary btn-line"><img src="<mt:Var name="ec_static_path" />images/line.svg" width="20" height="20"><span class="post-share-label">送る</span></a>
+        </li>
+        <li class="post-share-item post-share-hatena">
+            <a href="http://b.hatena.ne.jp/entry/<mt:Var name="ec_share_url" encode_url="1" />" data-hatena-bookmark-title="<mt:Var name="ec_share_title" />" data-hatena-bookmark-layout="simple" rel="nofollow" target="_blank" class="hatena-bookmark-button btn btn-primary btn-hatena"><img src="<mt:Var name="ec_static_path" />images/hatena_bookmark.svg" width="14" height="14"><span class="post-share-label">はてブ</span></a>
+            <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        </li>
+        <li class="post-share-item post-share-google-plus">
+            <a href="https://plus.google.com/share?url=<mt:Var name="ec_share_url" encode_url="1" />" rel="nofollow" target="_blank" onclick="window.open(this.href, 'gpluswindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;" class="btn btn-primary btn-google-plus"><i class="fa fa-google-plus"></i><span class="post-share-label">+1する</span></a>
+        </li>
+        <li class="post-share-item post-share-pinterest">
+            <a href="http://www.pinterest.com/pin/create/button/?url=<mt:Var name="ec_share_url" encode_url="1" />&amp;media=<mt:Var name="ec_meta_eyecatch" />&amp;description=<mt:Var name="ec_share_title" encode_url="1" />" rel="nofollow" target="_blank" class="btn btn-primary btn-pinterest"><i class="fa fa-pinterest"></i><span class="post-share-label">Pin it</span></a>
+        </li>
+        <li class="post-share-item post-share-feedly">
+            <a href="http://cloud.feedly.com/#subscription%2Ffeed%2F<mt:Link template="feed_recent" encode_url="1" />" rel="nofollow" target="_blank" class="btn btn-primary btn-feedly"><img src="<mt:Var name="ec_static_path" />images/feedly.svg" width="18" height="18"><span class="post-share-label">Feedly</span></a>
+        </li>
+    </ul>
+</mt:SetVarBlock>
+<mt:Ignore>
+# ----------------------------
+</mt:Ignore>
+
+<div class="post">
+
+    <div class="post-header">
+        <<mt:Var name="tag" /> class="post-header-title"><mt:EntryTitle encode_html="1" /></<mt:Var name="tag" />>
+
+        <ul class="post-header-meta">
+            <mt:If name="date" eq="1">
+            <li class="post-date"><time datetime="<mt:EntryDate language="en" format="%Y-%m-%d" />"><mt:EntryDate language="en" format="$ec_entry_date" /></time></li>
+            </mt:If>
+            <mt:Unless name="ec_taxonomy_basename" eq="">
+            <li class="post-category"><a href="<mt:Var name="ec_taxonomy_path" />" class="label label-pull label-primary"><mt:Var name="ec_taxonomy_label" /></a></li>
+            </mt:Unless>
+        </ul>
+    <!-- /.post-header --></div>
+
+    <mt:If name="sns_top" eq="1">
+    <div class="post-share post-share-top">
+        <mt:Var name="ec_sns_list" />
+    <!-- /.post-share --></div>
+    </mt:If>
+
+    <div class="post-contents">
+
+        <mt:EntryBody />
+
+        <mt:IfArchiveType archive_type="Individual">
+        <div id="more-<mt:Var name="ec_entry_id" />" class="post-contents-more">
+            <mt:EntryMore />
+        <!-- /.post-contents-more --></div>
+        </mt:IfArchiveType>
+
+    <!-- /.post-contents --></div>
+
+    <mt:If name="sns_bottom" eq="1">
+    <div class="post-share post-share-bottom">
+        <mt:Var name="ec_sns_list" />
+    <!-- /.post-share --></div>
+    </mt:If>
+
+    <mt:If name="ec_post_link_url">
+        <p class="post-more"><a href="<mt:Var name="ec_post_link_url" />" title="「<mt:EntryTitle encode_html="1" />」の詳細ページへ" class="btn btn-sm btn-secondary">詳細はこちら <i class="fa fa-angle-right"></i></a></p>
+    <mt:Else>
+        <mt:If tag="EntryMore">
+            <mt:If name="archive_listing" note="一覧関係のテンプレートであれば">
+                <p class="post-more"><a href="<mt:EntryPermalink />#more-<mt:Var name="ec_post_id" />" title="「<mt:EntryTitle encode_html="1" />」の詳細ページへ" class="btn btn-sm btn-secondary">もっと読む <i class="fa fa-angle-right"></i></a></p>
+            <mt:ElseIf name="blog_index" note="ブログトップページのテンプレート（blog_index）であれば">
+                <p class="post-more"><a href="<mt:EntryPermalink />#more-<mt:Var name="ec_post_id" />" title="「<mt:EntryTitle encode_html="1" />」の詳細ページへ" class="btn btn-sm btn-secondary">もっと読む <i class="fa fa-angle-right"></i></a></p>
+            </mt:If>
+        </mt:If>
+    </mt:If>
+
+    <mt:IfArchiveType archive_type="Individual">
+    <div class="post-footer">
+
+        <ul class="post-footer-meta">
+            <mt:EntryIfTagged>
+            <li class="post-tag"><dfn title="Tag of this Entry">タグ </dfn><mt:EntryTags glue='<span class="delimiter">, </span>'><a href="<mt:Var name="ec_search_path" />?IncludeBlogs=<mt:BlogID />&amp;tag=<mt:TagName encode_url="1" />&amp;limit=<mt:Var name="ec_search_count" op="*" value="2" />&amp;blog_id=<mt:BlogID />" rel="tag" class="label label-default"><mt:TagName encode_html="1" /></a></mt:EntryTags></li>
+            </mt:EntryIfTagged>
+            <mt:If name="date" eq="1">
+            <li class="post-date"><dfn title="Publication date of this Entry">公開日 </dfn><time datetime="<mt:EntryDate language="en" format="%Y-%m-%d %H:%m:%S" />"><mt:EntryDate language="en" format="$ec_entry_date" /> <mt:EntryDate language="en" format="$ec_entry_time" /></time></li>
+            </mt:If>
+            <li class="post-url"><dfn title="Permalink of this Entry">URL </dfn><mt:EntryPermalink /></li>
+        </ul>
+    <!-- /.post-footer --></div>
+    </mt:IfArchiveType>
+
+<!-- /.post --></div>

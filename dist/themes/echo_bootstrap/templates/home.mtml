@@ -1,0 +1,68 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n"><mt:Ignore>
+# =======================
+# 
+# ホーム
+# 
+# =======================
+</mt:Ignore>
+<!DOCTYPE html>
+<html lang="<mt:BlogLanguage />">
+<head>
+<mt:Include module="コンフィグ-共通" />
+<mt:Include module="コンフィグ-ホーム" />
+<mt:Include module="head要素" />
+<mt:IfWebsite>
+    <meta property="og:type" content="website">
+<mt:Else>
+    <meta property="og:type" content="article">
+</mt:IfWebsite>
+</head>
+<body class="<mt:Var name="ec_body_class" />">
+<mt:Include module="ヘッダ" />
+<mt:Include module="ナビ-グローバルナビ" />
+
+<div class="contents">
+    <main role="main">
+
+        <mt:Pages tag="@home">
+        <mt:PageBody mteval="1" />
+        <mt:PageMore mteval="1" />
+        </mt:Pages>
+
+        <div class="section section-01">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 col-lg-9">
+                        <div class="main">
+                            <mt:WidgetSet name="ホーム-中段1" />
+                        <!-- /.main --></div>
+                    <!-- /.col-md-12 col-lg-9 --></div>
+
+                    <div class="col-md-12 col-lg-3">
+                        <div class="sub">
+                            <mt:Var name="__is_sub__" value="1" />
+                            <mt:WidgetSet name="ホーム-中段2" />
+                            <mt:Var name="__is_sub__" value="0" />
+                        <!-- /.sub --></div>
+                    <!-- /.col-md-12 col-lg-3 --></div>
+
+                <!-- /.row --></div>
+            <!-- /.container --></div>
+        <!-- /.section section-01 --></div>
+
+        <div class="section section-03">
+            <div class="container">
+                <mt:WidgetSet name="ホーム-下段" />
+            <!-- /.container --></div>
+        <!-- /.section section-03 --></div>
+
+    </main>
+<!-- /.contents --></div>
+
+<mt:Include module="フッタ" />
+<mt:Include module="デバッグ-ホーム" />
+
+</body>
+</html>
+</mt:Unless>

@@ -1,0 +1,48 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-ローカルナビ-ページ
+# 
+# 参照する変数:
+#   ec_taxonomy_label
+#   ec_post_id
+# 
+# ローカル変数:
+#   __current_post_id__
+# 
+# =======================
+</mt:Ignore>
+<mt:If name="ec_taxonomy_label">
+<div class="card widget widget-localnav widget-page-localnav">
+    <div class="card-header clearfix">
+        <mt:If name="__is_sub__" eq="1">
+        <p class="card-title pull-left"><mt:Var name="ec_taxonomy_label" /></p>
+        <mt:Else>
+        <h2 class="card-title pull-left"><mt:Var name="ec_taxonomy_label" /></h2>
+        </mt:If>
+    </div>
+
+    <mt:Pages folder="$ec_taxonomy_label" sort_by="authored_on" sort_order="ascend" limit="999">
+    <mt:PagesHeader>
+    <div class="list-group list-group-flush">
+    </mt:PagesHeader>
+
+        <mt:PageID setvar="__current_post_id__" />
+        <mt:If name="__current_post_id__" eq="$ec_post_id">
+        <a href="#" class="active list-group-item post-<mt:PageID />">
+            <mt:PageTitle encode_html="1" />
+        </a>
+        <mt:Else>
+        <a href="<mt:PagePermalink />" class="list-group-item post-<mt:PageID />">
+            <mt:PageTitle encode_html="1" />
+        </a>
+        </mt:If>
+
+    <mt:PagesFooter>
+    <!-- /.list-group --></div>
+    </mt:PagesFooter>
+
+    </mt:Pages>
+
+<!-- /.card widget --></div>
+</mt:If>

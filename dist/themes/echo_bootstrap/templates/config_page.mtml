@@ -1,0 +1,104 @@
+<mt:Ignore>
+# =======================
+# 
+# コンフィグ-ページ
+# 
+# =======================
+</mt:Ignore>
+
+<mt:Ignore>
+# -----------------------
+# Post
+# -----------------------
+</mt:Ignore>
+
+<mt:PageID setvar="ec_post_id" note="ページのID" />
+<mt:PageBasename setvar="ec_post_basename" note="ページのベースネーム" />
+
+<mt:Ignore>
+# -----------------------
+# Taxonomy(Folder)
+# 
+# ローカル変数:
+#   __is_ancestor__
+# -----------------------
+</mt:Ignore>
+
+<mt:TemplateNote value="フォルダ情報に一旦空の値を代入" />
+<mt:SetVar name="ec_taxonomy_basename" value="" note="フォルダのベースネーム" />
+<mt:SetVar name="ec_taxonomy_label" value="" note="フォルダの表示名" />
+<mt:SetVar name="ec_taxonomy_path" value="" note="フォルダのパス" />
+
+<mt:TemplateNote value="現在のフォルダ情報" />
+<mt:PageFolder>
+    <mt:FolderBasename setvar="ec_taxonomy_basename" />
+    <mt:FolderLabel encode_html="1" setvar="ec_taxonomy_label" />
+    <mt:SetVarBlock name="ec_taxonomy_path"><mt:BlogRelativeURL /><mt:FolderPath /></mt:SetVarBlock>
+</mt:PageFolder>
+
+<mt:TemplateNote value="親フォルダ情報を一旦現在のフォルダ情報と同一にする" />
+    <mt:Var name="ec_taxonomy_basename" setvar="ec_taxonomy_parent_basename" note="親フォルダのベースネーム" />
+    <mt:Var name="ec_taxonomy_label" setvar="ec_taxonomy_parent_label" note="親フォルダの表示名" />
+    <mt:Var name="ec_taxonomy_path" setvar="ec_taxonomy_parent_path" note="親フォルダの完全なURL" />
+
+<mt:TemplateNote value="先祖フォルダ情報を一旦現在のフォルダ情報と同一にする" />
+    <mt:Var name="ec_taxonomy_basename" setvar="ec_taxonomy_ancestor_basename" note="先祖フォルダのベースネーム" />
+    <mt:Var name="ec_taxonomy_label" setvar="ec_taxonomy_ancestor_label" note="先祖フォルダの表示名" />
+    <mt:Var name="ec_taxonomy_path" setvar="ec_taxonomy_ancestor_path" note="先祖フォルダの完全なURL" />
+
+<mt:SetVar name="__is_ancestor__" value="0" />
+<mt:ParentFolders exclude_current="1" note="親・先祖フォルダを取得する">
+    <mt:If name="__is_ancestor__" eq="0" value="先祖フォルダ情報をまだ取得していなければ">
+        <mt:FolderBasename setvar="ec_taxonomy_ancestor_basename" />
+        <mt:FolderLabel encode_html="1" setvar="ec_taxonomy_ancestor_label" />
+        <mt:SetVarBlock name="ec_taxonomy_ancestor_path"><mt:BlogRelativeURL /><mt:FolderPath /></mt:SetVarBlock>
+        <mt:SetVar name="__is_ancestor__" value="1" />
+    </mt:If>
+    <mt:FolderBasename setvar="ec_taxonomy_parent_basename" />
+    <mt:FolderLabel encode_html="1" setvar="ec_taxonomy_parent_label" />
+    <mt:SetVarBlock name="ec_taxonomy_parent_path"><mt:BlogRelativeURL /><mt:FolderPath /></mt:SetVarBlock>
+</mt:ParentFolders>
+
+<mt:Ignore>
+# -----------------------
+# META
+# -----------------------
+</mt:Ignore>
+
+<mt:If tag="EcPageMetaTitle" note="METAのタイトルが別途指定されていれば">
+    <mt:EcPageMetaTitle encode_html="1" setvar="ec_meta_title" note="title要素" />
+<mt:Else>
+    <mt:If name="ec_post_basename" eq="index" note="インデックスページであれば: フォルダが終点となる">
+        <mt:SetVarBlock name="ec_meta_title" note="title要素"><mt:Var name="ec_taxonomy_label" /><mt:Unless name="ec_taxonomy_basename" eq="$ec_taxonomy_ancestor_basename"> | <mt:Var name="ec_taxonomy_ancestor_label" /></mt:Unless><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+    <mt:Else>
+    <mt:TemplateNote value="インデックスページでなければ: ページが終点となる" />
+        <mt:SetVarBlock name="ec_meta_title" note="title要素"><mt:PageTitle encode_html="1" /><mt:If name="ec_taxonomy_basename"> | <mt:Var name="ec_taxonomy_label" /></mt:If><mt:Unless name="ec_taxonomy_basename" eq="$ec_taxonomy_ancestor_basename"> | <mt:Var name="ec_taxonomy_ancestor_label" /></mt:Unless><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+    </mt:If>
+</mt:If>
+
+<mt:PageExcerpt encode_html="1" strip_linefeeds="1" words="120" setvar="ec_meta_description" note="概要" />
+<mt:PagePermalink setvar="ec_meta_permalink" note="完全なURL" />
+<mt:PageDate format_name="iso8601" setvar="ec_meta_publish" note="再構築された時点のタイムスタンプ" />
+<mt:Var name="ec_taxonomy_label" setvar="ec_meta_category" note="分類" />
+
+<mt:If tag="EcPageEyecatch">
+    <mt:EcPageEyecatchAsset>
+        <mt:AssetURL setvar="ec_meta_eyecatch" note="アイキャッチ画像" />
+    </mt:EcPageEyecatchAsset>
+</mt:If>
+
+<mt:EcPageMetaNoindex setvar="ec_meta_noindex" note="検索サイトインデックスの可否" />
+
+<mt:Ignore>
+# -----------------------
+# Others
+# -----------------------
+</mt:Ignore>
+
+<mt:If tag="EcPageLayout" note="ページレイアウトが指定されていれば">
+    <mt:EcPageLayout setvar="ec_page_layout" note="ページのレイアウト" />
+<mt:Else>
+    <mt:SetVar name="ec_page_layout" value="col2" note="標準レイアウト: 2カラム">
+</mt:If>
+
+<mt:SetVarBlock name="ec_body_class" note="body要素のクラス名">singular <mt:ArchiveType lower_case="1" /><mt:If name="ec_post_basename" eq="index"> <mt:ArchiveType lower_case="1" />-index</mt:If> post-<mt:PageID /> layout-<mt:Var name="ec_page_layout" /><mt:If name="ec_taxonomy_basename"> taxonomy-<mt:Var name="ec_taxonomy_basename" /></mt:If><mt:Unless name="ec_taxonomy_parent_basename" eq="$ec_taxonomy_basename"> taxonomy-<mt:Var name="ec_taxonomy_parent_basename" /></mt:Unless><mt:Unless name="ec_taxonomy_ancestor_basename" eq="$ec_taxonomy_parent_basename"> taxonomy-<mt:Var name="ec_taxonomy_ancestor_basename" /></mt:Unless></mt:SetVarBlock>

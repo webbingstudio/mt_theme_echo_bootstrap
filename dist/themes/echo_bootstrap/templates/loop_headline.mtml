@@ -1,0 +1,23 @@
+<mt:Ignore>
+# =======================
+# 
+# 記事ループ-ヘッドライン
+# 
+# 使い方:
+#   <mt:Include module="記事ループ-ヘッドライン" tag="p" />
+# 
+# モディファイアの基本値:
+#   tag = h3
+# 
+# =======================
+</mt:Ignore>
+<mt:Unless name="tag">
+    <mt:SetVar name="tag" value="h3" />
+</mt:Unless>
+
+<div class="headline post-<mt:EntryID />">
+    <a href="<mt:If tag="EcEntryLinkUrl"><mt:EcEntryLinkUrl /><mt:Else><mt:EntryPermalink /></mt:If>">
+        <p class="headline-date"><mt:EntryDate language="en" format="$ec_entry_date" /></p>
+        <<mt:Var name="tag" /> class="headline-title"><mt:EntryTitle encode_html="1" /></<mt:Var name="tag" />>
+    </a>
+<!-- /.headline --></div>

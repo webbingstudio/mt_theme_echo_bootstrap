@@ -1,0 +1,49 @@
+<mt:Ignore>
+# =======================
+# 
+# トピックパス-アーカイブ-年月別
+# 
+# 参照する変数:
+#   ec_archive_type
+#   ec_breadcrumb_home_label
+#   ec_blog_contents_label
+#   ec_archive_title
+# 
+# ローカル変数:
+#   __topicpath_count__
+# 
+# =======================
+</mt:Ignore>
+<mt:SetVar name="__topicpath_count__" value="0" />
+<nav class="topicpath">
+    <ol class="breadcrumb"<mt:Var name="ec_itemscope_ol">>
+
+        <li<mt:Var name="ec_itemscope_li">>
+            <a href="<mt:Var name="ec_website_path" />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_breadcrumb_home_label" encode_html="1" /></span></a>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+
+        <mt:IfWebsite note="ブログであればブログトップへのリンクを追加">
+        <mt:Else>
+        <li<mt:Var name="ec_itemscope_li">>
+            <a href="<mt:BlogRelativeURL />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:BlogName encode_html="1" /></span></a>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+        </mt:IfWebsite>
+
+        <li<mt:Var name="ec_itemscope_li">>
+            <a href="<mt:Link template="blog_index" />"<mt:Var name="ec_itemscope_a">><mt:Var name="ec_blog_contents_label" /></a>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+
+        <li class="active"<mt:Var name="ec_itemscope_li">>
+            <span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_archive_title" /></span>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+
+    </ol>
+</nav>

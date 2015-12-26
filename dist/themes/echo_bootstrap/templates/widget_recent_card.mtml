@@ -1,0 +1,39 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-ブログ新着-カード
+# 
+# =======================
+</mt:Ignore>
+<mt:SetVar name="entry_count" value="0" />
+<mt:Entries category="NOT xxx" sort_by="authored_on" sort_order="descend" limit="6">
+<mt:EntriesHeader>
+<div class="widget widget-recent-card">
+    <mt:Unless name="__is_sub__" eq="1" note="サイドメニュー内ではないとき: rowを生成する">
+    <div class="row js-flatheight">
+    </mt:Unless>
+</mt:EntriesHeader>
+
+        <mt:If name="__is_sub__" eq="1">
+        <mt:Include module="記事ループ-カード" tag="p" />
+        <mt:Else>
+        <div class="col-sm-4">
+            <mt:Include module="記事ループ-カード" />
+        <!-- /.col-sm-4 --></div>
+        </mt:If>
+
+    <mt:SetVarBlock name="__post_par__"><mt:Var name="__counter__" op="%" value="3" /></mt:SetVarBlock>
+    <mt:Unless name="__is_sub__" eq="1">
+        <mt:If name="__post_par__" eq="0">
+        <!-- /.row --></div>
+        <div class="row js-flatheight">
+        </mt:If>
+    </mt:Unless>
+
+<mt:EntriesFooter>
+    <mt:Unless name="__is_sub__" eq="1">
+    <!-- /.row --></div>
+    </mt:Unless>
+<!-- /.widget --></div>
+</mt:EntriesFooter>
+</mt:Entries>

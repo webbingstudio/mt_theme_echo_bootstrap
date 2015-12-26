@@ -1,0 +1,88 @@
+<mt:Ignore>
+# =======================
+# 
+# デバッグ-ホーム
+# 
+# =======================
+</mt:Ignore>
+<mt:If name="ec_debug" eq="1">
+<div class="ec-debug p-y-lg">
+    <div class="container">
+
+        <p class="h3">デバッグモード</p>
+
+        <div class="card ec-debug">
+            <div class="card-header">META</div>
+            <div class="card-block">
+                <dl>
+                    <dt>ec_meta_title</dt>
+                    <dd><mt:Var name="ec_meta_title" _default="(none)" /></dd>
+                    <dt>ec_meta_description</dt>
+                    <dd><mt:Var name="ec_meta_description" _default="(none)" /></dd>
+                    <dt>ec_meta_permalink</dt>
+                    <dd><mt:Var name="ec_meta_permalink" _default="(none)" /></dd>
+                    <dt>ec_meta_publish</dt>
+                    <dd><mt:Var name="ec_meta_publish" _default="(none)" /></dd>
+                    <dt>ec_meta_category</dt>
+                    <dd>none</dd>
+                    <dt>ec_meta_eyecatch</dt>
+                    <dd>
+                        <mt:If name="ec_meta_eyecatch">
+                            <img src="<mt:Var name="ec_meta_eyecatch" />" style="width: 150px; height: auto;">
+                        <mt:Else>
+                            (none)
+                        </mt:If>
+                    </dd>
+                </dl>
+            <!-- /.card-block --></div>
+        <!-- /.card ec-debug --></div>
+
+        <div class="card ec-debug">
+            <div class="card-header">Website,Blog</div>
+            <div class="card-block">
+                <dl>
+                    <dt>ec_website_name</dt>
+                    <dd><mt:Var name="ec_website_name" _default="(none)" /></dd>
+                    <dt>ec_website_suffix</dt>
+                    <dd><mt:Var name="ec_website_suffix" _default="(none)" /></dd>
+                    <dt>ec_website_description</dt>
+                    <dd><mt:Var name="ec_website_description" _default="(none)" /></dd>
+                    <dt>ec_website_path</dt>
+                    <dd><mt:Var name="ec_website_path" _default="(none)" /></dd>
+                    <dt>ec_website_fullpath</dt>
+                    <dd><mt:Var name="ec_website_fullpath" _default="(none)" /></dd>
+                    <dt>ec_website_ogimage</dt>
+                    <dd>
+                        <mt:If name="ec_website_ogimage">
+                            <img src="<mt:Var name="ec_website_ogimage" />" style="width: 150px; height: auto;">
+                        <mt:Else>
+                            (none)
+                        </mt:If>
+                    </dd>
+                    <dt>ec_website_twitter</dt>
+                    <dd><mt:Var name="ec_website_twitter" _default="(none)" /></dd>
+                    <dt>ec_website_fbpage</dt>
+                    <dd><mt:Var name="ec_website_fbpage" _default="(none)" /></dd>
+                    <dt>ec_website_fbappid</dt>
+                    <dd><mt:Var name="ec_website_fbappid" _default="(none)" /></dd>
+                    <dt>ec_website_url</dt>
+                    <dd><mt:Var name="ec_website_url" _default="(none)" /></dd>
+                </dl>
+            <!-- /.card-block --></div>
+        <!-- /.card ec-debug --></div>
+
+        <div class="card ec-debug">
+            <div class="card-header">Other</div>
+            <div class="card-block">
+                <dl>
+                    <dt>ec_body_class</dt>
+                    <dd><mt:Var name="ec_body_class" _default="(none)" /></dd>
+                    <dt>ec_component</dt>
+                    <dd><mt:Var name="ec_component" _default="media" /></dd>
+                </dl>
+            <!-- /.card-block --></div>
+        <!-- /.card ec-debug --></div>
+
+    <!-- /.container --></div>
+<!-- /.ec-debug p-y-lg --></div>
+</mt:If>

@@ -1,0 +1,59 @@
+<mt:Ignore>
+# =======================
+# 
+# 記事ループ-メディア
+# 
+# 使い方:
+#   <mt:Include module="記事ループ-メディア" tag="p" thumbnail="0" date="0" excerpt="0" />
+# 
+# モディファイアの基本値:
+#   tag = h3
+#   thumbnail = 1
+#   date = 1
+#   excerpt = 1
+# 
+# =======================
+</mt:Ignore>
+<mt:Unless name="tag">
+    <mt:SetVar name="tag" value="h3" />
+</mt:Unless>
+<mt:Unless name="thumbnail" eq="0">
+    <mt:SetVar name="thumbnail" value="1" />
+</mt:Unless>
+<mt:Unless name="date" eq="0">
+    <mt:SetVar name="date" value="1" />
+</mt:Unless>
+<mt:Unless name="excerpt" eq="0">
+    <mt:SetVar name="excerpt" value="1" />
+</mt:Unless>
+
+<div class="media post-<mt:EntryID />">
+    <a href="<mt:If tag="EcEntryLinkUrl"><mt:EcEntryLinkUrl /><mt:Else><mt:EntryPermalink /></mt:If>">
+        <mt:If name="thumbnail" eq="1">
+        <div class="media-left">
+            <mt:If tag="EcEntryThumbnail">
+                <mt:EcEntryThumbnailAsset>
+                    <mt:Include module="パーツ-アイキャッチ画像" width="240" />
+                    <img src="<mt:var name="ec_eye_thumb_url" />" alt="<mt:var name="ec_eye_alt" />" width="<mt:var name="ec_eye_width" />" height="<mt:var name="ec_eye_height" />" class="media-object">
+                </mt:EcEntryThumbnailAsset>
+            <mt:ElseIf tag="EcEntryEyecatch">
+                <mt:EcEntryEyecatchAsset>
+                    <mt:Include module="パーツ-アイキャッチ画像" width="240" />
+                    <img src="<mt:var name="ec_eye_thumb_url" />" alt="<mt:var name="ec_eye_alt" />" width="<mt:var name="ec_eye_width" />" height="<mt:var name="ec_eye_height" />" class="media-object">
+                </mt:EcEntryEyecatchAsset>
+            <mt:Else>
+                <img src="<mt:Var name="ec_static_path" />images/noimage.jpg" class="media-object">
+            </mt:If>
+        <!-- /.media-left --></div>
+        </mt:If>
+        <div class="media-body">
+            <<mt:Var name="tag" /> class="media-title"><mt:EntryTitle encode_html="1" /></<mt:Var name="tag" />>
+            <mt:If name="date" eq="1">
+            <p class="media-date"><mt:EntryDate language="en" format="$ec_entry_date" /></p>
+            </mt:If>
+            <mt:If name="excerpt" eq="1">
+            <p class="media-excerpt"><mt:EntryExcerpt words="120" /></p>
+            </mt:If>
+        <!-- /.media-body --></div>
+    </a>
+<!-- /.media --></div>

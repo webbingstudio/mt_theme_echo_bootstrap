@@ -1,0 +1,67 @@
+<mt:Ignore>
+# =======================
+# 
+# 記事ループ-装飾なし
+# 
+# 使い方:
+#   <mt:Include module="コンフィグ-記事ループ" />
+#   <mt:Include module="記事ループ-装飾なし" />
+# 
+# =======================
+</mt:Ignore>
+
+<div class="post post-debug post-<mt:EntryID />">
+<dl>
+
+    <dt>EntryID</dt>
+    <dd><mt:EntryID /></dd>
+    
+    <dt>EntryTitle</dt>
+    <dd><mt:EntryTitle encode_html="1" /></dd>
+    
+    <dt>EntryDate</dt>
+    <dd><mt:EntryDate language="en" format="$ec_entry_date" /> <mt:EntryDate language="en" format="$ec_entry_time" /></dd>
+    
+    <dt>EntryPermalink</dt>
+    <dd><mt:EntryPermalink /></dd>
+    
+    <dt>EcEntryLinkUrl</dt>
+    <dd><mt:EcEntryLinkUrl _default="(none)" /></dd>
+    
+    <dt>EcEntryThumbnail</dt>
+    
+    <dd>
+    <mt:If tag="EcEntryThumbnail">
+    <mt:EcEntryThumbnailAsset>
+        <mt:Include module="パーツ-アイキャッチ画像" print="1" />
+    </mt:EcEntryThumbnailAsset>
+    <mt:Else>
+    (none)
+    </mt:If>
+    </dd>
+    
+    <dt>EcEntryEyecatch</dt>
+    
+    <dd>
+    <mt:If tag="EcEntryEyecatch">
+    <mt:EcEntryEyecatchAsset>
+        <mt:Include module="パーツ-アイキャッチ画像" print="1" />
+    </mt:EcEntryEyecatchAsset>
+    <mt:Else>
+    (none)
+    </mt:If>
+    </dd>
+    
+    <dt>EntryExcerpt</dt>
+    <dd><mt:EntryExcerpt _default="(none)" /></dd>
+    
+    <dt>EntryBody</dt>
+    <dd><mt:EntryBody _default="(none)" /></dd>
+    
+    <dt>EntryMore</dt>
+    <dd><mt:EntryMore _default="(none)" /></dd>
+
+</dl>
+<hr />
+
+<!-- /.post --></div>

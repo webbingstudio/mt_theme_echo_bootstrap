@@ -1,0 +1,87 @@
+<mt:Ignore>
+# =======================
+# 
+# パーツ-アイキャッチ画像
+# アイキャッチ画像の情報を変数で返す
+# 
+# モディファイアの基本値:
+#   print = 0
+#   square = 0
+#   width = 480
+#   height = 360
+#   alt = asset description
+# 
+# 返す変数:
+#   ec_eye_alt
+#   ec_eye_thumb_url
+#   ec_eye_org_width
+#   ec_eye_org_height
+#   ec_eye_org_url
+# 
+# 使い方1:
+#   <mt:If tag="EcPageEyecatch">
+#       <mt:EcPageEyecatchAsset>
+#           <mt:Include module="パーツ-アイキャッチ画像" print="1" />
+#       </mt:EcPageEyecatchAsset>
+#   </mt:If>
+# 
+# 使い方2:
+#   <mt:If tag="EcCategoryEyecatch">
+#       <mt:EcPageEyecatchAsset>
+#           <mt:Include module="パーツ-アイキャッチ画像" width="960" height="540" />
+#           <div class="ec-cover" style="background-image: url('<mt:var name="ec_eye_url" />')">
+#       </mt:EcPageEyecatchAsset>
+#   </mt:If>
+# 
+# 使い方3:
+#   <mt:If tag="EcEntryEyecatch">
+#       <mt:EcPageEyecatchAsset>
+#           <mt:Include module="パーツ-アイキャッチ画像" width="300" square="1" print="1" />
+#       </mt:EcPageEyecatchAsset>
+#   <mt:Else>
+#       (noimage)
+#   </mt:If>
+# 
+# =======================
+</mt:Ignore>
+<mt:Unless name="print">
+    <mt:SetVar name="print" value="0" />
+</mt:Unless>
+
+<mt:Unless name="square">
+    <mt:SetVar name="square" value="0" />
+</mt:Unless>
+
+<mt:Unless name="width">
+    <mt:SetVar name="width" value="480" />
+</mt:Unless>
+
+<mt:Unless name="square">
+    <mt:Unless name="height">
+        <mt:SetVar name="height" value="360" />
+    </mt:Unless>
+</mt:Unless>
+
+<mt:If name="alt">
+    <mt:Var name="alt" setvar="ec_eye_alt" />
+<mt:Else>
+    <mt:AssetProperty property="description" encode_html="1" setvar="ec_eye_alt" />
+</mt:If>
+
+<mt:AssetURL setvar="ec_eye_org_url" />
+<mt:AssetProperty property="image_width" setvar="ec_eye_org_width" />
+<mt:AssetProperty property="image_height" setvar="ec_eye_org_height" />
+
+<mt:If name="square">
+    <mt:AssetThumbnailURL width="$width" square="1" setvar="ec_eye_thumb_url" />
+<mt:Else>
+    <mt:If name="ec_eye_org_width" le="$ec_eye_org_height">
+        <mt:AssetThumbnailURL height="$height" setvar="ec_eye_thumb_url" />
+    <mt:Else>
+        <mt:AssetThumbnailURL width="$width" setvar="ec_eye_thumb_url" />
+    </mt:if>
+</mt:if>
+
+<mt:If name="print">
+    <img src="<mt:var name="ec_eye_url" />" width="<mt:var name="width" />" width="<mt:var name="height" />" class="img-responsive">
+</mt:if>

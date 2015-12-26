@@ -1,0 +1,39 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-月別アーカイブリスト
+# 
+# 必須ファイル:
+#   /js/all.js
+# 
+# =======================
+</mt:Ignore>
+<mt:IfArchiveTypeEnabled archive_type="Monthly">
+<mt:ArchiveList archive_type="Monthly">
+<mt:ArchiveListHeader>
+<div class="card widget widget-monthly-archive widget-archive-dropdown">
+    <div class="card-header clearfix">
+        <mt:If name="__is_sub__" eq="1">
+        <h3 class="card-title pull-left">アーカイブ</h3>
+        <mt:Else>
+        <h2 class="card-title pull-left">アーカイブ</h2>
+        </mt:If>
+    </div>
+    <div class="card-block">
+        <form>
+            <div class="form-group">
+                <select class="form-control" id="monthly-archive-select">
+                <option>月を選択...</option>
+</mt:ArchiveListHeader>
+
+                <option value="<mt:ArchiveLink encode_html="1" />"><mt:ArchiveTitle /></option>
+
+<mt:ArchiveListFooter>
+                </select>
+            </div>
+        </form>
+    </div>
+<!-- /.card widget --></div>
+</mt:ArchiveListFooter>
+</mt:ArchiveList>
+</mt:IfArchiveTypeEnabled>

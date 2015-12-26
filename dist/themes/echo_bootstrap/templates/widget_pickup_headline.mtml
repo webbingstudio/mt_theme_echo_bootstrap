@@ -1,0 +1,31 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-ピックアップ-ヘッドライン
+# 
+# =======================
+</mt:Ignore>
+<mt:Entries category="NOT xxx" sort_by="authored_on" sort_order="descend" field:EcEntryPickup="1" limit="3">
+<mt:EntriesHeader>
+<div class="card widget widget-pickup-headline">
+    <div class="card-header clearfix">
+        <mt:If name="__is_sub__" eq="1">
+        <p class="card-title pull-left"><i class="fa fa-exclamation-circle"></i> 重要なお知らせ</p>
+        <mt:Else>
+        <h2 class="card-title pull-left"><i class="fa fa-exclamation-circle"></i> 重要なお知らせ</h2>
+        </mt:If>
+    </div>
+    <div class="card-block">
+</mt:EntriesHeader>
+
+        <mt:If name="__is_sub__" eq="1">
+        <mt:Include module="記事ループ-ヘッドライン" tag="p" />
+        <mt:Else>
+        <mt:Include module="記事ループ-ヘッドライン" />
+        </mt:If>
+
+<mt:EntriesFooter>
+    <!-- /.card-block --></div>
+<!-- /.card widget --></div>
+</mt:EntriesFooter>
+</mt:Entries>

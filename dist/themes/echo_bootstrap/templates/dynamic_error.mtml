@@ -1,0 +1,78 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n"><mt:Ignore>
+# =======================
+# 
+# ダイナミックパブリッシングエラー
+# 
+# =======================
+</mt:Ignore>
+<!DOCTYPE html>
+<html lang="<mt:BlogLanguage />">
+<head>
+<mt:Include module="コンフィグ-共通" />
+
+<mt:SetVarBlock name="ec_meta_title">ページが見つかりません<mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+<mt:SetVar name="ec_body_class" value="error error-404" />
+<mt:Include module="head要素" />
+<meta name="robots" content="noindex">
+</head>
+<body class="search">
+<mt:Include module="ヘッダ" />
+<mt:Include module="ナビ-グローバルナビ" />
+
+<div class="contents">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-lg-9">
+                <main class="main" role="main">
+
+                    <div class="archive-header">
+                        <h1 class="archive-title">404 Not Found</h1>
+                    <!-- /.archive-header --></div>
+
+                    <mt:WidgetSet name="コンテンツ-本文の前-ページ" />
+
+                    <div class="message">
+
+                        <h2 class="message-title">ページが見つかりません</h2>
+
+                        <p>お探しのアドレスには、コンテンツがありません。<br>
+                        移動、もしくは削除された可能性があります。</p>
+                        <p>お手数ですが、サイト内検索をご利用いただくか、トップページから目的のコンテンツをお探しください。</p>
+
+                        <div class="text-center">
+                            <p><a href="<mt:Var name="ec_website_path">" class="btn btn-secondary"><mt:Var name="ec_website_name" /> トップページ</a></p>
+                        </div>
+
+                    <!-- /.message --></div>
+
+                    <mt:WidgetSet name="コンテンツ-本文の後-ページ" />
+
+                </main>
+            <!-- /.col-md-12 col-lg-9 --></div>
+
+            <div class="col-md-12 col-lg-3">
+                <div class="sub">
+                    <mt:Var name="__is_sub__" value="1" />
+                    <mt:WidgetSet name="サブメニュー-ページ" />
+                    <mt:Var name="__is_sub__" value="0" />
+                <!-- /.sub --></div>
+            <!-- /.col-md-12 col-lg-3 --></div>
+
+        <!-- /.row --></div>
+    <!-- /.container --></div>
+
+    <div class="section section-03">
+        <div class="container">
+            <mt:WidgetSet name="コンテンツ-下段" />
+        <!-- /.container --></div>
+    <!-- /.section section-03 --></div>
+
+<!-- /.contents --></div>
+
+<mt:Include module="フッタ" />
+
+</body>
+</html>
+</mt:Unless>

@@ -1,0 +1,76 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n"><mt:Ignore>
+# =======================
+# 
+# ポップアップ画像
+# 
+# =======================
+</mt:Ignore>
+<html lang="<mt:BlogLanguage />">
+<head>
+<meta charset="<mt:PublishCharset />">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<style type="text/css">
+html,body {
+    font: 13px/1.1 sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#popup-container .popup-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+#popup-container .popup-close a {
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    width: <mt:ImageWidth />px;
+    height: <mt:ImageHeight />px;
+    top: 0;
+    left: 0;
+}
+
+#popup-container .popup-close a:link,
+#popup-container .popup-close a:visited {
+    text-decoration: none;
+}
+
+#popup-container .popup-close a span.popup-text {
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: <mt:ImageWidth />px;
+    height: 1em;
+    padding: 10px 0;
+    background: #000000;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    text-indent: -999em;
+    opacity: 0;
+}
+
+#popup-container .popup-close a:hover span.popup-text,
+#popup-container .popup-close a:focus span.popup-text,
+#popup-container .popup-close a:active span.popup-text {
+    text-indent: 0;
+    opacity: 0.5;
+}
+
+</style>
+</head>
+<body class="popup">
+<div id="popup-container">
+    <img src="<mt:ImageURL />" width="<mt:ImageWidth />" height="<mt:ImageHeight />" class="popup-image" />
+
+    <script type="text/javascript">
+    document.write("<div class=\"popup-close\"><a href=\"javascript:window.close();\"><span class=\"popup-text\">ウィンドウを閉じる</span></a></div>");
+    </script>
+<!-- /#popup-container --></div>
+</body>
+</html></mt:Unless>

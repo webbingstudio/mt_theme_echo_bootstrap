@@ -1,0 +1,679 @@
+id: echo_bootstrap
+label: 'echo Bootstrap'
+name: 'echo Bootstrap'
+version: 1.0.0
+author_link: http://echo-mt.cms-skill.net/
+author_name: WebbingStudio
+class: 'blog'
+description: '「echo」は、プロの制作者向けに、効率よくウェブサイトを構築できるよう設計したフレームワークテーマです。「Bootstrap 4」とアイコンフォント「Font Awesome」をベースに、構造と装飾を分離した、再利用性の高い設計を行っています。'
+thumbnail_file: thumb.png
+thumbnail_file_medium: thumb-medium.png
+thumbnail_file_small: thumb-small.png
+elements:
+  blog_static_files:
+    component: ~
+    data:
+      - images
+      - css
+      - js
+      - fonts
+      - share
+    importer: blog_static_files
+  custom_fields:
+    component: commercial
+    data:
+      ecblogcommontitle:
+        default: ''
+        description: title要素末尾のブログ名の略称を変更したい場合は、ここに入力してください。親サイトの設定があった場合は上書きされます。
+        name: title要素のブログ名の略称
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogCommonTitle
+        type: text
+      ecblogfbappid:
+        default: ''
+        description: FacebookアプリケーションIDがあれば入力してください。親サイトの設定があった場合は上書きされます。
+        name: FacebookアプリケーションID
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogFbappid
+        type: text
+      ecblogfbpage:
+        default: ''
+        description: FacebookページのURLがあれば入力してください。親サイトの設定があった場合は上書きされます。
+        name: FacebookページのURL
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogFbpage
+        type: text
+      ecbloghomedescription:
+        default: ''
+        description: このブログのホームの、METAの概要文を変更したい場合は、ここに入力してください。親サイトの設定があった場合は上書きされます。
+        name: ホームのMETAの概要文
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogHomeDescription
+        type: textarea
+      ecbloghometitle:
+        default: ''
+        description: このブログのホームの、title要素を変更したい場合は、ここに入力してください。親サイトの設定があった場合は上書きされます。
+        name: ホームのtitle要素
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogHomeTitle
+        type: text
+      ecbloghtmlhead:
+        default: ''
+        description: HTMLのhead要素末尾に追加したい内容があれば入力してください。親サイトの設定があった場合は、親サイトの内容に追記されます。
+        name: head要素
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogHtmlHead
+        type: textarea
+      ecblogindexcomponent:
+        default: 親サイトと同じ
+        description: このブログの、一覧ページの記事の初期コンポーネントを選択してください。カテゴリーで個別に指定があった場合は上書きされます。
+        name: 記事の初期コンポーネント
+        obj_type: blog
+        options: 親サイトと同じ,media,body,card,headline,listgroup,none
+        required: '1'
+        tag: EcBlogIndexComponent
+        type: select
+      ecblogmainimage1:
+        default: ''
+        description: このブログのメイン画像をアップロードしてください。親サイトの設定があった場合は上書きされます。
+        name: メイン画像1枚目
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogMainimage1
+        type: image
+      ecblogmainimage2:
+        default: ''
+        description: このブログのメイン画像をアップロードしてください。親サイトの設定があった場合は上書きされます。
+        name: メイン画像2枚目
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogMainimage2
+        type: image
+      ecblogmainimage3:
+        default: ''
+        description: このブログのメイン画像をアップロードしてください。親サイトの設定があった場合は上書きされます。
+        name: メイン画像3枚目
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogMainimage3
+        type: image
+      ecblogmainimage4:
+        default: ''
+        description: このブログのメイン画像をアップロードしてください。親サイトの設定があった場合は上書きされます。
+        name: メイン画像4枚目
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogMainimage4
+        type: image
+      ecblogmainimage5:
+        default: ''
+        description: このブログのメイン画像をアップロードしてください。親サイトの設定があった場合は上書きされます。
+        name: メイン画像5枚目
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogMainimage5
+        type: image
+      ecblogogimage:
+        default: ''
+        description: このブログのOGP用画像(og:image)をアップロードしてください。親サイトの設定があった場合は上書きされます。
+        name: og:image
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogOgimage
+        type: image
+      ecblogtwitter:
+        default: ''
+        description: TwitterのアカウントIDがあれば入力してください。親サイトの設定があった場合は上書きされます。
+        name: 'Twitter ID'
+        obj_type: blog
+        options: ~
+        required: '0'
+        tag: EcBlogTwitter
+        type: text
+      eccategorycomponent:
+        default: 指定しない
+        description: このカテゴリーの記事のコンポーネントを選択してください。
+        name: 記事のコンポーネント
+        obj_type: category
+        options: 指定しない,media,body,card,headline,listgroup,none
+        required: '1'
+        tag: EcCategoryComponent
+        type: select
+      eccategoryeyecatch:
+        default: ''
+        description: このカテゴリーのアイキャッチ画像をアップロードしてください。
+        name: アイキャッチ画像
+        obj_type: category
+        options: ~
+        required: '0'
+        tag: EcCategoryEyecatch
+        type: image
+      ecentryeyecatch:
+        default: ''
+        description: この記事のアイキャッチ画像をアップロードしてください。SNSでシェアしたときにも引用されます。
+        name: アイキャッチ画像
+        obj_type: entry
+        options: ~
+        required: '0'
+        tag: EcEntryEyecatch
+        type: image
+      ecentryhtmlhead:
+        default: ''
+        description: この記事にCSSやJavaScriptを追加したい場合は、ここに入力してください。
+        name: head要素
+        obj_type: entry
+        options: ~
+        required: '0'
+        tag: EcEntryHtmlHead
+        type: textarea
+      ecentrylinkurl:
+        default: ''
+        description: この記事のリンクをクリックしたときに、別のURLへ移動させたい場合は、URLを入力してください。
+        name: リンク先URL
+        obj_type: entry
+        options: ~
+        required: '0'
+        tag: EcEntryLinkUrl
+        type: text
+      ecentrymetanoindex:
+        default: '0'
+        description: この記事を検索サイトに登録させない
+        name: 検索サイトに登録させない
+        obj_type: entry
+        options: 0,1
+        required: '0'
+        tag: EcEntryMetaNoindex
+        type: checkbox
+      ecentrymetatitle:
+        default: ''
+        description: この記事のtitle要素を変更したい場合は、ここに入力してください。
+        name: title要素
+        obj_type: entry
+        options: ~
+        required: '0'
+        tag: EcEntryMetaTitle
+        type: text
+      ecentrypickup:
+        default: '0'
+        description: この記事をピックアップリストに表示する
+        name: ピックアップ
+        obj_type: entry
+        options: 0,1
+        required: '0'
+        tag: EcEntryPickup
+        type: checkbox
+      ecentrythumbnail:
+        default: ''
+        description: この記事の一覧用の縮小画像を、アイキャッチ画像とは別に表示したい場合は、ここにアップロードしてください。
+        name: サムネイル
+        obj_type: entry
+        options: ~
+        required: '0'
+        tag: EcEntryThumbnail
+        type: image
+      ecpageeyecatch:
+        default: ''
+        description: このページのアイキャッチ画像をアップロードしてください。SNSでシェアしたときにも引用されます。
+        name: アイキャッチ画像
+        obj_type: page
+        options: ~
+        required: '0'
+        tag: EcPageEyecatch
+        type: image
+      ecpagehtmlhead:
+        default: ''
+        description: このページにCSSやJavaScriptを追加したい場合は、ここに入力してください。
+        name: head要素
+        obj_type: page
+        options: ~
+        required: '0'
+        tag: EcPageHtmlHead
+        type: textarea
+      ecpagelayout:
+        default: col2
+        description: このページのレイアウトを選択してください。
+        name: ページレイアウト
+        obj_type: page
+        options: col2,col1,none
+        required: '1'
+        tag: EcPageLayout
+        type: select
+      ecpagemetanoindex:
+        default: '0'
+        description: このページを検索サイトに登録させない
+        name: 検索サイトに登録させない
+        obj_type: page
+        options: 0,1
+        required: '0'
+        tag: EcPageMetaNoindex
+        type: checkbox
+      ecpagemetatitle:
+        default: ''
+        description: このページのtitle要素を変更したい場合は、ここに入力してください。
+        name: title要素
+        obj_type: page
+        options: ~
+        required: '0'
+        tag: EcPageMetaTitle
+        type: text
+      ecwebsitecommontitle:
+        default: ''
+        description: title要素末尾のサイト名の略称を変更したい場合は、ここに入力してください。
+        name: title要素のサイト名の略称
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteCommonTitle
+        type: text
+      ecwebsitefbappid:
+        default: ''
+        description: FacebookアプリケーションIDがあれば入力してください。
+        name: FacebookアプリケーションID
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteFbappid
+        type: text
+      ecwebsitefbpage:
+        default: ''
+        description: FacebookページのURLがあれば入力してください。
+        name: FacebookページのURL
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteFbpage
+        type: text
+      ecwebsitehomedescription:
+        default: ''
+        description: ホームのMETAの概要文を変更したい場合は、ここに入力してください。
+        name: ホームのMETAの概要文
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteHomeDescription
+        type: textarea
+      ecwebsitehometitle:
+        default: ''
+        description: ホームのtitle要素を変更したい場合は、ここに入力してください。
+        name: ホームのtitle要素
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteHomeTitle
+        type: text
+      ecwebsitehtmlhead:
+        default: ''
+        description: HTMLのhead要素末尾に追加したい内容があれば入力してください。
+        name: head要素
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteHtmlHead
+        type: textarea
+      ecwebsiteindexcomponent:
+        default: media
+        description: このウェブサイトの、一覧ページの記事の初期コンポーネントを選択してください。カテゴリーで個別に指定があった場合は上書きされます。
+        name: 記事の初期コンポーネント
+        obj_type: website
+        options: media,body,card,headline,listgroup,none
+        required: '1'
+        tag: EcWebsiteIndexComponent
+        type: select
+      ecwebsitemainimage1:
+        default: ''
+        description: このウェブサイトのメイン画像をアップロードしてください。
+        name: メイン画像1枚目
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteMainimage1
+        type: image
+      ecwebsitemainimage2:
+        default: ''
+        description: このウェブサイトのメイン画像をアップロードしてください。
+        name: メイン画像2枚目
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteMainimage2
+        type: image
+      ecwebsitemainimage3:
+        default: ''
+        description: このウェブサイトのメイン画像をアップロードしてください。
+        name: メイン画像3枚目
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteMainimage3
+        type: image
+      ecwebsitemainimage4:
+        default: ''
+        description: このウェブサイトのメイン画像をアップロードしてください。
+        name: メイン画像4枚目
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteMainimage4
+        type: image
+      ecwebsitemainimage5:
+        default: ''
+        description: このウェブサイトのメイン画像をアップロードしてください。
+        name: メイン画像5枚目
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteMainimage5
+        type: image
+      ecwebsiteogimage:
+        default: ''
+        description: このウェブサイトのOGP用画像(og:image)をアップロードしてください。
+        name: og:image
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteOgimage
+        type: image
+      ecwebsitetwitter:
+        default: ''
+        description: TwitterのアカウントIDがあれば入力してください。
+        name: 'Twitter ID'
+        obj_type: website
+        options: ~
+        required: '0'
+        tag: EcWebsiteTwitter
+        type: text
+    importer: custom_fields
+  default_folders:
+    component: ~
+    data:
+      _ignore:
+        label: _ignore
+      sample:
+        label: サンプル
+    importer: default_folders
+  default_pages:
+    data:
+      banner:
+        basename: banner
+        title: 'バナー'
+        text: ''
+        tags: '@banner'
+        folder: _ignore
+      cta:
+        basename: cta
+        title: 'コールトゥアクション'
+        text: ''
+        tags: '@cta'
+        folder: _ignore
+      home:
+        basename: home
+        title: 'ホーム'
+        text: ''
+        tags: '@home'
+        folder: _ignore
+      index:
+        basename: index
+        title: 'リッチテキストのサンプル'
+        text: ''
+        folder: sample
+      bootstrap:
+        basename: bootstrap
+        title: 'Bootstrap 4のサンプル'
+        text: ''
+        folder: sample
+      echo:
+        basename: echo
+        title: '追加コンポーネントのサンプル'
+        text: ''
+        folder: sample
+    importer: default_pages
+  default_prefs:
+    component: ~
+    data:
+      convert_paras: 0
+      allow_comments_default: 0
+      allow_pings_default: 0
+      words_in_excerpt: 120
+    importer: default_prefs
+  template_set:
+    component: ~
+    data:
+      base_path: templates
+      label: 'exported_template set'
+      templates:
+        index:
+          home:
+            label: ホーム
+            outfile: index.html
+            rebuild_me: '1'
+          blog_index:
+            label: ブログトップページ
+            outfile: blog/index.html
+            rebuild_me: '1'
+          feed_recent:
+            build_type: '1'
+            label: 新着記事のフィード
+            outfile: feed.xml
+            rebuild_me: '1'
+          mtappjquery_user_js:
+            label: MTAppjQuery.user.js
+            outfile: MTAppjQuery/user.js
+            rebuild_me: '1'
+          mtappjquery_user_css:
+            label: MTAppjQuery.user.css
+            outfile: MTAppjQuery/user.css
+            rebuild_me: '1'
+        archive:
+          archive:
+            label: アーカイブ
+            mappings:
+              author:
+                archive_type: Author
+                file_template: 'blog/author-<mt:AuthorID />/%i'
+                preferred: '1'
+              category:
+                archive_type: Category
+                file_template: blog/%-c/%i
+                preferred: '1'
+          archive_datebased:
+            label: アーカイブ-年月別
+            mappings:
+              monthly:
+                archive_type: Monthly
+                build_type: '1'
+                file_template: blog/%y/%m/%i
+                preferred: '1'
+        page:
+          page:
+            label: ページ
+            mappings:
+              page:
+                archive_type: Page
+                file_template: '%c/%f'
+                preferred: '1'
+        individual:
+          entry:
+            label: 記事
+            mappings:
+              individual:
+                archive_type: Individual
+                build_type: '1'
+                file_template: blog/post/%E/index%x
+                preferred: '1'
+        module:
+          config_archive:
+            label: コンフィグ-アーカイブ
+          config_blog_index:
+            label: コンフィグ-ブログトップページ
+          config_common:
+            label: コンフィグ-共通
+          config_entry_loop:
+            label: コンフィグ-記事ループ
+          config_entry:
+            label: コンフィグ-記事
+          config_home:
+            label: コンフィグ-ホーム
+          config_page:
+            label: コンフィグ-ページ
+          config_search_results:
+            label: コンフィグ-検索結果
+          debug_archive:
+            label: デバッグ-アーカイブ
+          debug_entry:
+            label: デバッグ-記事
+          debug_home:
+            label: デバッグ-ホーム
+          debug_page:
+            label: デバッグ-ページ
+          footer:
+            label: フッタ
+          header:
+            label: ヘッダ
+          html_head:
+            label: head要素
+          loop_body:
+            label: 記事ループ-本文
+          loop_card:
+            label: 記事ループ-カード
+          loop_headline:
+            label: 記事ループ-ヘッドライン
+          loop_list_group:
+            label: 記事ループ-リストグループ
+          loop_media:
+            label: 記事ループ-メディア
+          loop_none:
+            label: 記事ループ-装飾なし
+          nav_global:
+            label: ナビ-グローバルナビ
+          nav_pagination:
+            label: ナビ-ページネーション
+          topicpath_archive_datebased:
+            label: トピックパス-アーカイブ-年月別
+          topicpath_archive:
+            label: トピックパス-アーカイブ
+          topicpath_entry_page:
+            label: トピックパス-記事・ページ
+          parts_entry_eyecatch:
+            label: パーツ-アイキャッチ画像
+          parts_mainimg:
+            label: パーツ-メイン画像
+          parts_similar:
+            label: パーツ-関連記事
+        system:
+          comment_preview:
+            label: コメントプレビュー
+          comment_response:
+            label: コメント完了
+          dynamic_error:
+            label: ダイナミックパブリッシングエラー
+          popup_image:
+            label: ポップアップ画像
+          search_results:
+            label: 検索結果
+        widget:
+          widget_banner:
+            label: ウィジェット-バナー
+          widget_cta:
+            label: ウィジェット-コールトゥアクション
+          widget_category_archive:
+            label: ウィジェット-カテゴリーアーカイブリスト
+          widget_local_nav_entry:
+            label: ウィジェット-ローカルナビ-記事
+          widget_local_nav_page:
+            label: ウィジェット-ローカルナビ-ページ
+          widget_monthly_archive:
+            label: ウィジェット-月別アーカイブリスト
+          widget_recent_card:
+            label: ウィジェット-ブログ新着-カード
+          widget_recent_headline:
+            label: ウィジェット-ブログ新着-ヘッドライン
+          widget_recent_list_group:
+            label: ウィジェット-ブログ新着-リストグループ
+          widget_recent_media:
+            label: ウィジェット-ブログ新着-メディア
+          widget_pickup_card:
+            label: ウィジェット-ピックアップ-カード
+          widget_pickup_headline:
+            label: ウィジェット-ピックアップ-ヘッドライン
+          widget_search:
+            label: ウィジェット-検索
+        widgetset:
+          widgetset_contents_after_body_blog:
+            label: コンテンツ-本文の後-ブログ
+            order: 1000
+            widgets: []
+          widgetset_contents_after_body_page:
+            label: コンテンツ-本文の後-ページ
+            order: 1000
+            widgets: []
+          widgetset_contents_before_body_blog:
+            label: コンテンツ-本文の前-ブログ
+            order: 1000
+            widgets:
+              - 'ウィジェット-ピックアップ-ヘッドライン'
+          widgetset_contents_before_body_page:
+            label: コンテンツ-本文の前-ページ
+            order: 1000
+            widgets: []
+          widgetset_contents_bottom:
+            label: コンテンツ-下段
+            order: 1000
+            widgets:
+              - 'ウィジェット-コールトゥアクション'
+          widgetset_home_bottom:
+            label: ホーム-下段
+            order: 1000
+            widgets:
+              - 'ウィジェット-コールトゥアクション'
+          widgetset_home_middle_01:
+            label: ホーム-中段1
+            order: 1000
+            widgets:
+              - 'ウィジェット-ブログ新着-ヘッドライン'
+              - 'ウィジェット-ブログ新着-メディア'
+              - 'ウィジェット-ブログ新着-カード'
+          widgetset_home_middle_02:
+            label: ホーム-中段2
+            order: 1000
+            widgets:
+              - 'ウィジェット-検索'
+              - 'ウィジェット-ピックアップ-カード'
+              - 'ウィジェット-ブログ新着-リストグループ'
+              - 'ウィジェット-バナー'
+          widgetset_sub_blog:
+            label: サブメニュー-ブログ
+            order: 1000
+            widgets:
+              - ウィジェット-検索
+              - ウィジェット-ピックアップ-カード
+              - ウィジェット-カテゴリーアーカイブリスト
+              - ウィジェット-ブログ新着-リストグループ
+              - ウィジェット-月別アーカイブリスト
+              - ウィジェット-バナー
+          widgetset_sub_page:
+            label: サブメニュー-ページ
+            order: 1000
+            widgets:
+              - ウィジェット-検索
+              - ウィジェット-ローカルナビ-ページ
+              - ウィジェット-ブログ新着-リストグループ
+              - ウィジェット-バナー
+    importer: template_set

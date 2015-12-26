@@ -1,0 +1,128 @@
+<mt:SetVarBlock name="__website_sort_option__" note="項目並び替え: ウェブサイト">
+name,description,
+
+c:ecwebsitecommontitle,
+c:ecwebsiteindexcomponent,
+
+c:ecwebsitehometitle,
+c:ecwebsitehomedescription,
+c:ecwebsitemainimage1,
+c:ecwebsitemainimage2,
+c:ecwebsitemainimage3,
+c:ecwebsitemainimage4,
+c:ecwebsitemainimage5,
+
+c:ecwebsiteogimage,
+c:ecwebsitetwitter,
+c:ecwebsitefbpage,
+c:ecwebsitefbappid,
+
+c:ecwebsitehtmlhead
+</mt:SetVarBlock>
+
+<mt:SetVarBlock name="__blog_sort_option__" note="項目並び替え: ブログ">
+name,description,
+
+c:ecblogcommontitle,
+c:ecblogindexcomponent,
+
+c:ecbloghometitle,
+c:ecbloghomedescription,
+c:ecblogmainimage1,
+c:ecblogmainimage2,
+c:ecblogmainimage3,
+c:ecblogmainimage4,
+c:ecblogmainimage5,
+
+c:ecblogogimage,
+c:ecblogtwitter,
+c:ecblogfbpage,
+c:ecblogfbappid,
+
+c:ecbloghtmlhead
+</mt:SetVarBlock>
+
+<mt:SetVarBlock name="__entry_sort_option__" note="項目並び替え: 記事">
+title,
+permalink,
+text,
+tags,
+c:ecentrypickup,
+c:ecentrymetanoindex,
+c:ecentryeyecatch,
+c:ecentrythumbnail,
+c:ecentrylinkurl,
+c:ecentrymetatitle,
+excerpt,
+c:ecentryhtmlhead
+</mt:SetVarBlock>
+
+<mt:SetVarBlock name="__page_sort_option__" note="項目並び替え: ページ">
+title,
+permalink,
+text,
+tags,
+c:ecpagemetanoindex,
+c:ecpageeyecatch,
+c:ecpagelayout,
+c:ecpagemetatitle,
+excerpt,
+c:ecpagehtmlhead
+</mt:SetVarBlock>
+
+(function($){
+
+//$.MTAppDebug();
+$.MTAppFullscreen();
+
+//並び替えを禁止する
+if(mtappVars.screen_id == 'edit-entry'){
+    $('div.sort-enabled').removeClass('sort-enabled');
+}
+if(mtappVars.screen_id == 'edit-page'){
+    $('div.sort-enabled').removeClass('sort-enabled');
+}
+
+if(( mtappVars.blog_id == '<mt:WebsiteID />' )||( mtappVars.blog_id == '<mt:BlogID />' )) {
+
+    //使用しない左メニューを隠す
+    var Menu = $('#menu');
+    $('#menu-feedback', Menu).css({ display: 'none' });
+
+    //ウェブサイトカスタムフィールドの並び替え
+    if(mtappVars.screen_id == 'edit-blog') {
+
+<mt:IfWebsite>
+        $.MTAppFieldSort({
+            sort: '<mt:Var name="__website_sort_option__" regex_replace="/\s*\n+/g","" />',
+            insertID: 'blog-settings'
+        });
+<mt:Else>
+        $.MTAppFieldSort({
+            sort: '<mt:Var name="__blog_sort_option__" regex_replace="/\s*\n+/g","" />',
+            insertID: 'blog-settings'
+        });
+</mt:IfWebsite>
+
+    }
+
+    //記事カスタムフィールドの並び替え
+    if(mtappVars.screen_id == 'edit-entry') {
+
+        $.MTAppFieldSort({sort: '<mt:Var name="__entry_sort_option__" regex_replace="/\s*\n+/g","" />'});
+
+    }
+
+    //ページカスタムフィールドの並び替え
+    if(mtappVars.screen_id == 'edit-page') {
+
+        $.MTAppFieldSort({sort: '<mt:Var name="__page_sort_option__" regex_replace="/\s*\n+/g","" />'});
+
+    }
+
+
+}
+
+
+
+})(jQuery);

@@ -1,0 +1,100 @@
+<mt:Ignore>
+# =======================
+# 
+# パーツ-メイン画像
+# メイン画像の情報を変数で返す
+# ブログで指定がない場合は親ウェブサイトを参照する
+# 
+# 返す変数:
+#   ec_main_1_width
+#   ec_main_1_height
+#   ec_main_1_url
+#   ec_main_2_width
+#   ec_main_2_height
+#   ec_main_2_url
+#   ec_main_3_width
+#   ec_main_3_height
+#   ec_main_3_url
+#   ec_main_4_width
+#   ec_main_4_height
+#   ec_main_4_url
+#   ec_main_5_width
+#   ec_main_5_height
+#   ec_main_5_url
+# 
+# 使い方:
+#   <mt:include module="パーツ-メイン画像" />
+#   <img src="<mt:var name="ec_main_1_url" />" width="<mt:var name="ec_main_1_width" />" height="<mt:var name="ec_main_1_height" />">
+#   ...
+# 
+# =======================
+</mt:Ignore>
+<mt:If tag="EcBlogMainimage1">
+    <mt:EcBlogMainimage1Asset>
+        <mt:AssetURL setvar="ec_main_1_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_1_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_1_height" />
+    </mt:EcBlogMainimage1Asset>
+<mt:ElseIf tag="EcWebsiteMainimage1">
+    <mt:EcWebsiteMainimage1Asset>
+        <mt:AssetURL setvar="ec_main_1_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_1_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_1_height" />
+    </mt:EcWebsiteMainimage1Asset>
+</mt:If>
+
+<mt:If tag="EcBlogMainimage2">
+    <mt:EcBlogMainimage2Asset>
+        <mt:AssetURL setvar="ec_main_2_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_2_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_2_height" />
+    </mt:EcBlogMainimage2Asset>
+<mt:ElseIf tag="EcWebsiteMainimage2">
+    <mt:EcWebsiteMainimage2Asset>
+        <mt:AssetURL setvar="ec_main_2_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_2_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_2_height" />
+    </mt:EcWebsiteMainimage2Asset>
+</mt:If>
+
+<mt:If tag="EcBlogMainimage3">
+    <mt:EcBlogMainimage3Asset>
+        <mt:AssetURL setvar="ec_main_3_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_3_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_3_height" />
+    </mt:EcBlogMainimage3Asset>
+<mt:ElseIf tag="EcWebsiteMainimage3">
+    <mt:EcWebsiteMainimage3Asset>
+        <mt:AssetURL setvar="ec_main_3_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_3_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_3_height" />
+    </mt:EcWebsiteMainimage3Asset>
+</mt:If>
+
+<mt:If tag="EcBlogMainimage4">
+    <mt:EcBlogMainimage4Asset>
+        <mt:AssetURL setvar="ec_main_4_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_4_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_4_height" />
+    </mt:EcBlogMainimage4Asset>
+<mt:ElseIf tag="EcWebsiteMainimage4">
+    <mt:EcWebsiteMainimage4Asset>
+        <mt:AssetURL setvar="ec_main_4_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_4_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_4_height" />
+    </mt:EcWebsiteMainimage4Asset>
+</mt:If>
+
+<mt:If tag="EcBlogMainimage5">
+    <mt:EcBlogMainimage5Asset>
+        <mt:AssetURL setvar="ec_main_5_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_5_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_5_height" />
+    </mt:EcBlogMainimage5Asset>
+<mt:ElseIf tag="EcWebsiteMainimage5">
+    <mt:EcWebsiteMainimage5Asset>
+        <mt:AssetURL setvar="ec_main_5_url" />
+        <mt:AssetProperty property="image_width" setvar="ec_main_5_width" />
+        <mt:AssetProperty property="image_height" setvar="ec_main_5_height" />
+    </mt:EcWebsiteMainimage5Asset>
+</mt:If>

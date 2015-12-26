@@ -1,0 +1,47 @@
+<mt:Ignore>
+# =======================
+# 
+# 記事ループ-カード
+# 
+# 使い方:
+#   <mt:Include module="記事ループ-カード" tag="p" date="0" />
+# 
+# モディファイアの基本値:
+#   tag = h3
+#   date = 1
+# 
+# =======================
+</mt:Ignore>
+<mt:Unless name="tag">
+    <mt:SetVar name="tag" value="h3" />
+</mt:Unless>
+<mt:Unless name="date" eq="0">
+    <mt:SetVar name="date" value="1" />
+</mt:Unless>
+
+<div class="card card-item post-<mt:EntryID />">
+    <a href="<mt:If tag="EcEntryLinkUrl"><mt:EcEntryLinkUrl /><mt:Else><mt:EntryPermalink /></mt:If>">
+
+        <mt:If tag="EcEntryThumbnail">
+            <mt:EcEntryThumbnailAsset>
+                <mt:Include module="パーツ-アイキャッチ画像" width="240" />
+                <img src="<mt:var name="ec_eye_thumb_url" />" alt="<mt:var name="ec_eye_alt" />" width="<mt:var name="ec_eye_width" />" height="<mt:var name="ec_eye_height" />" class="img-responsive">
+            </mt:EcEntryThumbnailAsset>
+        <mt:ElseIf tag="EcEntryEyecatch">
+            <mt:EcEntryEyecatchAsset>
+                <mt:Include module="パーツ-アイキャッチ画像" width="240" />
+                <img src="<mt:var name="ec_eye_thumb_url" />" alt="<mt:var name="ec_eye_alt" />" width="<mt:var name="ec_eye_width" />" height="<mt:var name="ec_eye_height" />" class="img-responsive">
+            </mt:EcEntryEyecatchAsset>
+        <mt:Else>
+            <img src="<mt:Var name="ec_static_path" />images/noimage.jpg" class="img-responsive">
+        </mt:If>
+
+        <div class="card-block js-flatheight-target">
+            <<mt:Var name="tag" /> class="card-title"><mt:EntryTitle encode_html="1" /></<mt:Var name="tag" />>
+            <mt:If name="date" eq="1">
+            <p class="card-subtitle text-muted"><mt:EntryDate language="en" format="$ec_entry_date" /></p>
+            </mt:If>
+        <!-- /.card-block --></div>
+
+    </a>
+<!-- /.card --></div>

@@ -1,0 +1,73 @@
+<mt:Ignore>
+# =======================
+# 
+# トピックパス-アーカイブ
+# 
+# 参照する変数:
+#   ec_archive_type
+#   ec_breadcrumb_home_label
+#   ec_blog_contents_label
+#   ec_taxonomy_ancestor_basename
+#   ec_taxonomy_ancestor_label
+#   ec_taxonomy_ancestor_path
+#   ec_taxonomy_parent_basename
+#   ec_taxonomy_parent_label
+#   ec_taxonomy_parent_path
+#   ec_archive_title
+# 
+# ローカル変数:
+#   __topicpath_count__
+# 
+# =======================
+</mt:Ignore>
+<mt:SetVar name="__topicpath_count__" value="0" />
+
+<nav class="topicpath">
+    <ol class="breadcrumb"<mt:Var name="ec_itemscope_ol">>
+        <li<mt:Var name="ec_itemscope_li">>
+            <a href="<mt:Var name="ec_website_path" />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_breadcrumb_home_label" encode_html="1" /></span></a>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+
+        <mt:IfWebsite note="ブログであればブログトップへのリンクを追加">
+        <mt:Else>
+        <li<mt:Var name="ec_itemscope_li">>
+            <a href="<mt:BlogRelativeURL />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:BlogName encode_html="1" /></span></a>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+        </mt:IfWebsite>
+
+        <li<mt:Var name="ec_itemscope_li">>
+            <a href="<mt:Link template="blog_index" />"<mt:Var name="ec_itemscope_a">><mt:Var name="ec_blog_contents_label" /></a>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+
+        <mt:If name="ec_archive_type" like="Category" note="カテゴリー関連のとき">
+            <mt:Unless name="ec_taxonomy_ancestor_basename" eq="$ec_taxonomy_parent_basename" note="先祖カテゴリ・フォルダが明示されていれば">
+                <li<mt:Var name="ec_itemscope_li">>
+                    <a href="<mt:Var name="ec_taxonomy_ancestor_path" />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_taxonomy_ancestor_label" /></span></a>
+                    <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+                    <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+                </li>
+            </mt:Unless>
+
+            <mt:Unless name="ec_taxonomy_parent_basename" eq="$ec_taxonomy_basename" note="親カテゴリ・フォルダが明示されていれば">
+                <li<mt:Var name="ec_itemscope_li">>
+                    <a href="<mt:Var name="ec_taxonomy_parent_path" />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_taxonomy_parent_label" /></span></a>
+                    <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+                    <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+                </li>
+            </mt:Unless>
+        </mt:If>
+
+        <li class="active"<mt:Var name="ec_itemscope_li">>
+            <span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_archive_title" /></span>
+            <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+            <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+        </li>
+
+    <!-- /.breadcrumb --></ol>
+<!-- /.topicpath --></nav>

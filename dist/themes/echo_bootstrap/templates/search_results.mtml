@@ -1,0 +1,118 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n"><mt:Ignore>
+# =======================
+# 
+# 検索結果
+# 
+# =======================
+</mt:Ignore>
+<!DOCTYPE html>
+<html lang="<mt:BlogLanguage />">
+<head>
+<mt:Include module="コンフィグ-共通" />
+<mt:Include module="コンフィグ-検索結果" />
+<mt:Include module="head要素" />
+<meta name="robots" content="noindex">
+</head>
+<body class="<mt:Var name="ec_body_class" />">
+<mt:Include module="ヘッダ" />
+<mt:Include module="ナビ-グローバルナビ" />
+
+<div class="contents">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-lg-9">
+                <main class="main" role="main">
+
+                    <div class="archive-header">
+                        <h1 class="archive-title"><mt:Var name="ec_archive_title" /></h1>
+                    <!-- /.archive-header --></div>
+
+                    <mt:WidgetSet name="コンテンツ-本文の前-ブログ" />
+
+                    <mt:SearchResults>
+                    <mt:SearchResultsHeader>
+                    <div class="archive-list archive-list-media">
+                    </mt:SearchResultsHeader>
+
+                        <mt:Include module="記事ループ-メディア" thumbnail="0" />
+
+                    <mt:SearchResultsFooter>
+                    <!-- /.archive-list --></div>
+
+                    <nav class="serial-nav">
+                        <ul class="pager">
+                            <mt:IfPreviousResults>
+                            <li class="pager-prev"><a rel="prev" href="<mt:Var name="ec_search_previous_link" />">前のページ</a></li>
+                            </mt:IfPreviousResults>
+                            <mt:IfMoreResults>
+                            <li class="pager-next"><a rel="next" href="<mt:Var name="ec_search_next_link" />">次のページ</a></li>
+                            </mt:IfMoreResults>
+                        </ul>
+                    </nav>
+                    </mt:SearchResultsFooter>
+                    </mt:SearchResults>
+                    <mt:NoSearchResults>
+                        <div class="message">
+                            <p>該当するコンテンツが見つかりませんでした。</p>
+                        <!-- /.message --></div>
+                    </mt:NoSearchResults>
+
+                    <nav class="topicpath">
+                        <ol class="breadcrumb"<mt:Var name="ec_itemscope_ol">>
+
+                            <li<mt:Var name="ec_itemscope_li">>
+                                <a href="<mt:Var name="ec_website_path" />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">>Home</span></a>
+                                <mt:SetVarBlock name="ec_itemscope_count"><mt:Var name="ec_itemscope_count" op="++"></mt:SetVarBlock>
+                                <meta itemprop="position" content="<mt:Var name="ec_itemscope_count">">
+                            </li>
+
+                            <mt:IfWebsite note="ブログであればブログトップへのリンクを追加">
+                            <mt:Else>
+                            <li<mt:Var name="ec_itemscope_li">>
+                                <a href="<mt:BlogRelativeURL />"<mt:Var name="ec_itemscope_a">><span<mt:Var name="ec_itemscope_span">><mt:BlogName encode_html="1" /></span></a>
+                                <mt:Var name="__topicpath_count__" op="++" setvar="__topicpath_count__" />
+                                <meta itemprop="position" content="<mt:Var name="__topicpath_count__">">
+                            </li>
+                            </mt:IfWebsite>
+
+                            <li class="active"<mt:Var name="ec_itemscope_li">>
+                                <span<mt:Var name="ec_itemscope_span">><mt:Var name="ec_archive_title" /></span>
+                                <mt:SetVarBlock name="ec_itemscope_count"><mt:Var name="ec_itemscope_count" op="++"></mt:SetVarBlock>
+                                <meta itemprop="position" content="<mt:Var name="ec_itemscope_count">">
+                            </li>
+
+                        </ol>
+                    </nav>
+                    <mt:SetVar name="ec_itemscope_count" value="0" />
+
+                    <mt:WidgetSet name="コンテンツ-本文の後-ブログ" />
+
+                </main>
+            <!-- /.col-md-12 col-lg-9 --></div>
+
+            <div class="col-md-12 col-lg-3">
+                <div class="sub">
+                    <mt:Var name="__is_sub__" value="1" />
+                    <mt:WidgetSet name="サブメニュー-ブログ" />
+                    <mt:Var name="__is_sub__" value="0" />
+                <!-- /.sub --></div>
+            <!-- /.col-md-12 col-lg-3 --></div>
+
+        <!-- /.row --></div>
+    <!-- /.container --></div>
+
+    <div class="section section-03">
+        <div class="container">
+            <mt:WidgetSet name="コンテンツ-下段" />
+        <!-- /.container --></div>
+    <!-- /.section section-03 --></div>
+
+<!-- /.contents --></div>
+
+<mt:Include module="フッタ" />
+
+</body>
+</html>
+</mt:Unless>

@@ -1,0 +1,46 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-カテゴリーアーカイブリスト
+# 
+# 参照する変数:
+#   ec_taxonomy_basename
+# 
+# ローカル変数:
+#   __current_taxonomy_basename__
+# 
+# =======================
+</mt:Ignore>
+<mt:IfArchiveTypeEnabled archive_type="Category">
+<mt:If tag="BlogCategoryCount">
+<div class="card widget widget-localnav widget-page-localnav">
+    <div class="card-header clearfix">
+        <mt:If name="__is_sub__" eq="1">
+        <p class="card-title pull-left">カテゴリー</p>
+        <mt:Else>
+        <h2 class="card-title pull-left">カテゴリー</h2>
+        </mt:If>
+    </div>
+    <div class="list-hierarchy">
+
+    <mt:TopLevelCategories>
+        <mt:SubCatIsFirst>
+        <ul>
+        </mt:SubCatIsFirst>
+        <mt:CategoryBasename setvar="__current_taxonomy_basename__" />
+            <mt:If name="__current_taxonomy_basename__" eq="$ec_taxonomy_basename">
+            <li class="category-<mt:CategoryID />"><a href="<mt:CategoryArchiveLink />" class="active"><mt:CategoryLabel /></a>
+            <mt:Else>
+            <li class="category-<mt:CategoryID />"><a href="<mt:CategoryArchiveLink />"><mt:CategoryLabel /></a>
+            </mt:If>
+            <mt:SubCatsRecurse />
+            </li>
+            <mt:SubCatIsLast>
+        </ul>
+      </mt:SubCatIsLast>
+    </mt:TopLevelCategories>
+
+    <!-- /.list-hierarchy --></div>
+<!-- /.card widget --></div>
+</mt:If>
+</mt:IfArchiveTypeEnabled>

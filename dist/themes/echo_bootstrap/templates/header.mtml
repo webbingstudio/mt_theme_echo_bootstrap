@@ -1,0 +1,90 @@
+<mt:Ignore>
+# =======================
+# 
+# ヘッダ
+# 
+# =======================
+</mt:Ignore>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.5<mt:If name="ec_website_fbappid">&appId=<mt:Var name="ec_website_fbappid" /></mt:If>";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<header id="header">
+    <div class="container">
+
+        <div class="header-logo">
+            <a href="<mt:Var name="ec_website_url" />"><img src="<mt:Var name="ec_static_path" />images/logo.svg" width="128" height="40" alt="<mt:Var name="ec_website_name" />" class="header-logo-img"></a>
+        <!-- /.header-logo --></div>
+
+        <nav class="header-nav">
+            <ul class="list-inline">
+
+                <li>
+                    <a href="<mt:Link template="feed_recent">" class="btn btn-primary btn-round btn-rss">
+                    <i class="fa fa-rss"></i><span class="sr-only">RSSフィード</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="btn btn-primary btn-round btn-mail">
+                    <i class="fa fa-envelope"></i><span class="sr-only">お問い合わせ</span>
+                    </a>
+                </li>
+
+                <mt:If name="ec_website_twitter">
+                <li>
+                    <a href="http://twitter.com/<mt:Var name="ec_website_twitter" />" target="_blank" class="btn btn-primary btn-round btn-twitter">
+                    <i class="fa fa-twitter"></i><span class="sr-only">Twitter</span>
+                    </a>
+                </li>
+                </mt:If>
+
+                <mt:If name="ec_website_fbpage">
+                <li>
+                    <a href="<mt:Var name="ec_website_fbpage" />" target="_blank" class="btn btn-primary btn-round btn-facebook">
+                    <i class="fa fa-facebook"></i><span class="sr-only">Facebookページ</span>
+                    </a>
+                </li>
+                </mt:If>
+
+                <li>
+                    <a href="#" target="_blank" class="btn btn-primary btn-round btn-line">
+                    <img src="<mt:Var name="ec_static_path" />images/line.svg" width="20" height="20"><span class="sr-only">LINE #64;</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" target="_blank" class="btn btn-primary btn-round btn-instagram">
+                    <i class="fa fa-instagram"></i><span class="sr-only">Instagram</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" target="_blank" class="btn btn-primary btn-round btn-google-plus">
+                    <i class="fa fa-google-plus"></i><span class="sr-only"><span class="sr-only">Google+</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" target="_blank" class="btn btn-primary btn-round btn-youtube">
+                    <i class="fa fa-youtube"></i><span class="sr-only">YouTubeチャンネル</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" target="_blank" class="btn btn-primary btn-round btn-pinterest">
+                    <i class="fa fa-pinterest-p"></i><span class="sr-only">Pinterest</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+    <!-- /.container --></div>
+<!-- /#header --></header>

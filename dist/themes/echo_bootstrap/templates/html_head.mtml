@@ -1,0 +1,110 @@
+<mt:Ignore>
+# =======================
+# 
+# head要素
+# 
+# =======================
+</mt:Ignore>
+
+<meta charset="<mt:PublishCharset />">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title><mt:Var name="ec_meta_title" /></title>
+
+<mt:If name="ec_meta_description">
+<meta name="description" content="<mt:Var name="ec_meta_description" />">
+</mt:If>
+
+<mt:If name="ec_meta_keywords">
+<meta name="keywords" content="<mt:Var name="ec_meta_keywords" />">
+</mt:If>
+
+<meta property="og:locale" content="<mt:BlogLanguage locale="1" replace="ja_JA","ja_JP" />">
+
+<meta name="author" content="<mt:Var name="ec_website_name" />">
+
+<mt:Unless name="home" eq="1">
+<meta property="og:type" content="article">
+</mt:Unless>
+
+<mt:If name="ec_meta_title">
+<meta property="og:title" content="<mt:Var name="ec_meta_title" />">
+</mt:If>
+
+<mt:If name="ec_meta_description">
+<meta property="og:description" content="<mt:Var name="ec_meta_description" />">
+</mt:If>
+
+<mt:If name="ec_meta_permalink">
+<meta property="og:url" content="<mt:Var name="ec_meta_permalink" />">
+</mt:If>
+
+<meta property="og:site_name" content="<mt:Var name="ec_website_name" />">
+
+<mt:If name="ec_meta_eyecatch">
+<meta property="og:image" content="<mt:Var name="ec_meta_eyecatch" />">
+<mt:ElseIf name="ec_website_ogimage">
+<meta property="og:image" content="<mt:Var name="ec_website_ogimage" />">
+</mt:If>
+
+<mt:If name="ec_meta_publish">
+<meta property="og:updated_time" content="<mt:Var name="ec_meta_publish" />">
+</mt:If>
+
+<mt:If name="ec_meta_category">
+<meta property="article:section" content="<mt:Var name="ec_meta_category" />">
+</mt:If>
+
+<meta name="twitter:card" content="summary">
+
+<mt:If name="ec_meta_description">
+<meta name="twitter:description" content="<mt:Var name="ec_meta_description" />">
+</mt:If>
+
+<mt:If name="ec_meta_title">
+<meta name="twitter:title" content="<mt:Var name="ec_meta_title" />">
+</mt:If>
+
+<meta name="twitter:domain" content="<mt:Var name="ec_website_name" />">
+
+<mt:If name="ec_meta_eyecatch">
+<meta name="twitter:image" content="<mt:Var name="ec_meta_eyecatch" />">
+<mt:ElseIf name="ec_website_ogimage">
+<meta name="twitter:image" content="<mt:Var name="ec_website_ogimage" />">
+</mt:If>
+
+<mt:If name="ec_website_fbappid">
+<meta property="fb:app_id" content="<mt:Var name="ec_website_fbappid" />">
+</mt:If>
+
+<link rel="start" href="<mt:BlogURL encode_html="1" />">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<mt:Link template="feed_recent" />">
+<mt:CanonicalLink />
+
+<link rel="shortcut icon" href="<mt:Var name="ec_static_path" />share/favicon.ico">
+<link rel="apple-touch-icon" sizes="72x72" href="<mt:Var name="ec_static_path" />share/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="<mt:Var name="ec_static_path" />share/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="<mt:Var name="ec_static_path" />share/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="<mt:Var name="ec_static_path" />share/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="<mt:Var name="ec_static_path" />share/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="<mt:Var name="ec_static_path" />share/apple-touch-icon-152x152.png">
+
+<link rel="stylesheet" href="<mt:Var name="ec_static_path" />css/bootstrap.min.css">
+<link rel="stylesheet" href="<mt:Var name="ec_static_path" />css/font-awesome.min.css">
+<link rel="stylesheet" href="<mt:Var name="ec_static_path" />css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="<mt:Var name="ec_static_path" />css/utility.min.css">
+<link rel="stylesheet" href="<mt:Var name="ec_static_path" />css/style.min.css">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/slibs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script src="<mt:Var name="ec_static_path" />js/jquery.min.js"></script>
+<script src="<mt:Var name="ec_static_path" />js/bootstrap.min.js"></script>
+<script src="<mt:Var name="ec_static_path" />js/all.min.js"></script>
+
+<mt:IfWebsite><mt:EcWebsiteHtmlHead /></mt:IfWebsite>
+<mt:EcBlogHtmlHead />
+<mt:StatsSnippet />

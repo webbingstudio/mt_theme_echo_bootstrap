@@ -1,0 +1,30 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-ピックアップ-カード
+# 
+# =======================
+</mt:Ignore>
+<mt:Entries category="NOT xxx" sort_by="authored_on" sort_order="descend" field:EcEntryPickup="1" limit="3">
+<mt:EntriesHeader>
+<div class="widget widget-pickup-card">
+    <mt:Unless name="__is_sub__" eq="1">
+    <div class="row js-flatheight">
+    </mt:Unless>
+</mt:EntriesHeader>
+
+        <mt:If name="__is_sub__" eq="1">
+        <mt:Include module="記事ループ-カード" tag="p" />
+        <mt:Else>
+        <div class="col-sm-4">
+        <mt:Include module="記事ループ-カード" />
+        <!-- /.col-sm-4 --></div>
+        </mt:If>
+
+<mt:EntriesFooter>
+    <mt:Unless name="__is_sub__" eq="1">
+    <!-- /.row --></div>
+    </mt:Unless>
+<!-- /.widget --></div>
+</mt:EntriesFooter>
+</mt:Entries>

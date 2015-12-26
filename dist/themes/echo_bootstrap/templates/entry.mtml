@@ -1,0 +1,83 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n"><mt:Ignore>
+# =======================
+# 
+# 記事
+# 
+# =======================
+</mt:Ignore>
+<!DOCTYPE html>
+<html lang="<mt:BlogLanguage />">
+<head>
+<mt:Include module="コンフィグ-共通" />
+<mt:Include module="コンフィグ-記事" />
+<mt:Include module="head要素" />
+<meta property="article:published_time" content="<mt:Var name="ec_meta_publish" />">
+<mt:If name="ec_meta_noindex">
+<meta name="robots" content="noindex">
+</mt:If>
+<mt:EcEntryHtmlHead />
+</head>
+<body class="<mt:Var name="ec_body_class" />">
+<mt:Include module="ヘッダ" />
+<mt:Include module="ナビ-グローバルナビ" />
+
+<div class="contents">
+
+    <div class="contents-header">
+        <div class="container">
+            <p class="contents-header-title">ブログ</p>
+        <!-- /.container --></div>
+    <!-- /.contents-header --></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-lg-9">
+                <main class="main" role="main">
+
+                    <mt:WidgetSet name="コンテンツ-本文の前-ブログ" />
+                    <mt:Include module="記事ループ-本文" tag="h1" sns_top="1" sns_bottom="1" />
+
+                    <nav class="serial-nav">
+                        <ul class="pager">
+                            <mt:EntryPrevious>
+                            <li class="pager-prev"><a rel="prev" href="<mt:EntryPermalink />"><mt:EntryTitle encode_html="1" /></a></li>
+                            </mt:EntryPrevious>
+                            <mt:EntryNext>
+                            <li class="pager-next"><a rel="next" href="<mt:EntryPermalink />"><mt:EntryTitle encode_html="1" /></a></li>
+                            </mt:EntryNext>
+                        </ul>
+                    </nav>
+
+                    <mt:Include module="トピックパス-記事・ページ" />
+                    <mt:Include module="パーツ-関連記事" layout="card" />
+                    <mt:WidgetSet name="コンテンツ-本文の後-ブログ" />
+
+                </main>
+            <!-- /.col-md-12 col-lg-9 --></div>
+
+            <div class="col-md-12 col-lg-3">
+                <div class="sub">
+                    <mt:Var name="__is_sub__" value="1" />
+                    <mt:WidgetSet name="サブメニュー-ブログ" />
+                    <mt:Var name="__is_sub__" value="0" />
+                <!-- /.sub --></div>
+            <!-- /.col-md-12 col-lg-3 --></div>
+
+        <!-- /.row --></div>
+    <!-- /.container --></div>
+
+    <div class="section section-03">
+        <div class="container">
+            <mt:WidgetSet name="コンテンツ-下段" />
+        <!-- /.container --></div>
+    <!-- /.section section-03 --></div>
+
+<!-- /.contents --></div>
+
+<mt:Include module="フッタ" />
+<mt:Include module="デバッグ-記事" />
+
+</body>
+</html>
+</mt:Unless>

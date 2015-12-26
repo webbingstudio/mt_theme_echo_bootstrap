@@ -1,0 +1,23 @@
+<mt:Ignore>
+# =======================
+# 
+# ウィジェット-検索
+# 
+# =======================
+</mt:Ignore>
+<div class="widget widget-search">
+
+    <form method="get" class="form-inline" id="search" action="<mt:AdminCGIPath /><mt:SearchScript />">
+        <input class="form-control form-control-sm" type="text" name="search" value="<mt:IfStatic><mt:IfStraightSearch><mt:SearchString escape="html" /></mt:IfStraightSearch></mt:IfStatic>">
+        <mt:If name="search_results">
+        <input type="hidden" name="IncludeBlogs" value="<mt:SearchIncludeBlogs />">
+        <input type="hidden" name="limit" value="<mt:Var name="ec_search_count" />">
+        <mt:Else>
+        <input type="hidden" name="IncludeBlogs" value="<mt:BlogParentWebsite><mt:WebsiteID /><mt:Blogs include_blogs="children">,<mt:BlogID /></mt:Blogs></mt:BlogParentWebsite>">
+        <input type="hidden" name="limit" value="<mt:Var name="ec_search_count" op="*" value="2" />">
+        </mt:If>
+        <button class="btn btn-sm btn-secondary" type="submit"><i class="fa fa-search"></i><span class="sr-only">検索</span></button>
+    </form>
+
+<!-- /.widget --></div>
+

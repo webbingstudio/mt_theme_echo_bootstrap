@@ -1,0 +1,55 @@
+<mt:Ignore>
+# =======================
+# 
+# コンフィグ-ブログトップページ
+# 
+# =======================
+</mt:Ignore>
+
+<mt:Ignore>
+# -----------------------
+# META
+# 
+# ローカル変数:
+#   __is_recent_eyecatch__
+# -----------------------
+</mt:Ignore>
+<mt:SetVarBlock name="ec_meta_title" note="接尾辞を除くtitle要素"><mt:Var name="ec_blog_contents_label" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+
+<mt:TemplateNote value="概要: 最新5件のタイトルを反映する" />
+<mt:SetVarBlock name="ec_meta_description">
+    <mt:Entries sort_by="authored_on" sort_order="descend" limit="5" glue=",">
+        <mt:EntriesHeader><mt:Var name="ec_blog_contents_label" />の新着一覧です。</mt:EntriesHeader>
+        <mt:EntryTitle encode_html="1" />
+        <mt:EntriesFooter>…</mt:EntriesFooter>
+    </mt:Entries>
+</mt:SetVarBlock>
+<mt:Var name="ec_meta_description" strip="" trim="1" setvar="ec_meta_description">
+
+<mt:Link template="blog_index" setvar="ec_meta_permalink" note="完全なURL" />
+<mt:Date format_name="iso8601" setvar="ec_meta_publish" note="再構築された時点のタイムスタンプ" />
+
+<mt:TemplateNote value="アイキャッチ: 最新5件の記事中にアイキャッチがあれば反映する" />
+<mt:SetVar name="__is_recent_eyecatch__" value="0" />
+<mt:Entries sort_by="authored_on" sort_order="descend" limit="5">
+    <mt:If tag="EcEntryEyecatch">
+        <mt:If name="__is_recent_eyecatch__" eq="0">
+            <mt:EcEntryEyecatchAsset>
+                <mt:AssetURL setvar="ec_meta_eyecatch" note="アイキャッチ画像" />
+                <mt:SetVar name="__is_recent_eyecatch__" value="1" />
+            </mt:EcEntryEyecatchAsset>
+        </mt:If>
+    </mt:If>
+</mt:Entries>
+
+<mt:Ignore>
+# -----------------------
+# Others
+# -----------------------
+</mt:Ignore>
+<mt:SetVar name="ec_body_class" value="blog blog-index archive" />
+<mt:If name="ec_component" eq="headline" value="コンポーネントがヘッドライン・リストグループのときは1ページの件数を増やす">
+    <mt:SetVarBlock name="ec_search_count"><mt:Var name="ec_search_count" op="*" value="3" /></mt:SetVarBlock>
+<mt:ElseIf eq="listgroup">
+    <mt:SetVarBlock name="ec_search_count"><mt:Var name="ec_search_count" op="*" value="3" /></mt:SetVarBlock>
+</mt:If>

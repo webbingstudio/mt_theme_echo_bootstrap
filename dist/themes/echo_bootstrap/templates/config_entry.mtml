@@ -1,0 +1,120 @@
+<mt:Ignore>
+# =======================
+# 
+# コンフィグ-記事
+# 
+# =======================
+</mt:Ignore>
+
+<mt:Ignore>
+# -----------------------
+# Post
+# -----------------------
+</mt:Ignore>
+<mt:EntryID setvar="ec_post_id" note="記事のID" />
+<mt:EntryBasename setvar="ec_post_basename" note="記事のベースネーム" />
+
+<mt:EcEntryLinkUrl setvar="ec_post_link_url" note="リンク先URLが指定されている場合のURL" />
+<mt:EcEntryPickup setvar="ec_post_pickup" note="ピックアップが指定されていれば1" />
+
+<mt:Ignore>
+# -----------------------
+# Taxonomy(Category)
+# 
+# ローカル変数:
+#   __is_ancestor__
+# -----------------------
+</mt:Ignore>
+
+<mt:TemplateNote value="カテゴリー情報に一旦空の値を代入" />
+<mt:SetVar name="ec_taxonomy_basename" value="" note="カテゴリーのベースネーム" />
+<mt:SetVar name="ec_taxonomy_label" value="" note="カテゴリーの表示名" />
+<mt:SetVar name="ec_taxonomy_path" value="" note="カテゴリーのパス" />
+
+<mt:TemplateNote value="主カテゴリーの情報" />
+<mt:EntryPrimaryCategory>
+    <mt:CategoryBasename setvar="ec_taxonomy_basename" />
+    <mt:CategoryLabel encode_html="1" setvar="ec_taxonomy_label" />
+    <mt:CategoryArchiveLink setvar="ec_taxonomy_path" />
+</mt:EntryPrimaryCategory>
+
+<mt:TemplateNote value="親カテゴリー情報を一旦現在のカテゴリー情報と同一にする" />
+    <mt:Var name="ec_taxonomy_basename" setvar="ec_taxonomy_parent_basename" note="親カテゴリーのベースネーム" />
+    <mt:Var name="ec_taxonomy_label" setvar="ec_taxonomy_parent_label" note="親カテゴリーの表示名" />
+    <mt:Var name="ec_taxonomy_path" setvar="ec_taxonomy_parent_path" note="親カテゴリーの完全なURL" />
+
+<mt:TemplateNote value="先祖カテゴリー情報を一旦現在のカテゴリー情報と同一にする" />
+    <mt:Var name="ec_taxonomy_basename" setvar="ec_taxonomy_ancestor_basename" note="先祖カテゴリーのベースネーム" />
+    <mt:Var name="ec_taxonomy_label" setvar="ec_taxonomy_ancestor_label" note="先祖カテゴリーの表示名" />
+    <mt:Var name="ec_taxonomy_path" setvar="ec_taxonomy_ancestor_path" note="先祖カテゴリーの完全なURL" />
+
+<mt:SetVar name="__is_ancestor__" value="0" />
+<mt:EntryPrimaryCategory>
+    <mt:ParentCategories exclude_current="1" note="親・先祖カテゴリーを取得する">
+        <mt:If name="__is_ancestor__" eq="0" value="先祖カテゴリー情報をまだ取得していなければ">
+            <mt:CategoryBasename setvar="ec_taxonomy_ancestor_basename" />
+            <mt:CategoryLabel encode_html="1" setvar="ec_taxonomy_ancestor_label" />
+            <mt:CategoryArchiveLink setvar="ec_taxonomy_ancestor_path" />
+            <mt:SetVar name="__is_ancestor__" value="1" />
+        </mt:If>
+        <mt:CategoryBasename setvar="ec_taxonomy_parent_basename" />
+        <mt:CategoryLabel encode_html="1" setvar="ec_taxonomy_parent_label" />
+        <mt:CategoryArchiveLink setvar="ec_taxonomy_parent_path" />
+    </mt:ParentCategories>
+</mt:EntryPrimaryCategory>
+
+<mt:Ignore>
+# -----------------------
+# META
+# -----------------------
+</mt:Ignore>
+<mt:If tag="EcEntryMetaTitle" note="METAのタイトルが別途指定されていれば">
+    <mt:EcEntryMetaTitle encode_html="1" setvar="ec_meta_title" note="title要素" />
+<mt:Else>
+    <mt:SetVarBlock name="ec_meta_title" note="title要素"><mt:EntryTitle encode_html="1" /><mt:If name="ec_taxonomy_basename"> | <mt:Var name="ec_taxonomy_label" /></mt:If><mt:Unless name="ec_taxonomy_basename" eq="$ec_taxonomy_ancestor_basename"> | <mt:Var name="ec_taxonomy_ancestor_label" /></mt:Unless><mt:Var name="ec_blog_contents_label" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+</mt:If>
+
+<mt:EntryExcerpt remove_html="1" encode_html="1" setvar="ec_meta_description" note="概要" />
+
+<mt:If name="ec_post_link_url" eq="" note="リンク先URLが指定されていなければ">
+    <mt:EntryPermalink setvar="ec_meta_permalink" class="完全なURL" />
+</mt:If>
+
+<mt:EntryDate format_name="iso8601" setvar="ec_meta_publish" note="再構築された時点のタイムスタンプ" />
+<mt:Var name="ec_taxonomy_label" setvar="ec_meta_category" note="分類" />
+
+<mt:If tag="EcEntryEyecatch">
+    <mt:EcEntryEyecatchAsset>
+        <mt:AssetURL setvar="ec_meta_eyecatch" note="アイキャッチ画像" />
+    </mt:EcEntryEyecatchAsset>
+</mt:If>
+
+<mt:Unless name="ec_post_link_url" eq="" note="リンク先URLが指定されていれば">
+    <mt:SetVar name="ec_meta_noindex" value="1" note="検索サイトインデックスの可否" />
+<mt:Else>
+    <mt:EcEntryMetaNoindex setvar="ec_meta_noindex" />
+</mt:Unless>
+
+<mt:Ignore>
+# -----------------------
+# Share
+# -----------------------
+</mt:Ignore>
+
+<mt:TemplateNote value="SNSボタンでシェアしたときのタイトル: サイトの方針により略記を使用したり、媒体によって文言を変更するケースがあるため、別変数としている" />
+    <mt:If tag="EcEntryMetaTitle" note="METAのタイトルが別途指定されていれば">
+        <mt:EcEntryMetaTitle encode_html="1" setvar="ec_share_title" />
+    <mt:Else>
+        <mt:SetVarBlock name="ec_share_title"><mt:EntryTitle encode_html="1" /><mt:Var name="ec_website_suffix" /></mt:SetVarBlock>
+    </mt:If>
+
+<mt:TemplateNote value="SNSボタンでシェアしたときのURL: サイトの方針により末尾にクエリを付与するケースがあるため、別変数としている" />
+    <mt:EntryPermalink setvar="ec_share_url" />
+
+<mt:Ignore>
+# -----------------------
+# Others
+# -----------------------
+</mt:Ignore>
+
+<mt:SetVarBlock name="ec_body_class" note="body要素のクラス名">blog singular <mt:ArchiveType lower_case="1" /> post-<mt:Var name="ec_post_id" /><mt:Unless name="ec_taxonomy_basename" eq=""> taxonomy-<mt:Var name="ec_taxonomy_basename" /></mt:Unless><mt:Unless name="ec_taxonomy_parent_basename" eq="$ec_taxonomy_basename"> taxonomy-<mt:Var name="ec_taxonomy_parent_basename" /></mt:Unless><mt:Unless name="ec_taxonomy_ancestor_basename" eq="$ec_taxonomy_parent_basename"> taxonomy-<mt:Var name="ec_taxonomy_ancestor_basename" /></mt:Unless></mt:SetVarBlock>

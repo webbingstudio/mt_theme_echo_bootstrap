@@ -1,0 +1,25 @@
+<mt:Ignore>
+# =======================
+# 
+# ナビ-グローバルナビ
+# 
+# =======================
+</mt:Ignore>
+
+<mt:Ignore>
+<button type="button" class="btn btn-info global-nav-toggle hidden-lg-up" data-target="#global-nav">
+    <i class="fa fa-bars"></i><span class="global-nav-label">メニュー</span>
+</button>
+</mt:Ignore>
+
+<div id="global-nav">
+    <nav class="navbar navbar-dark bg-inverse">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="<mt:Var name="ec_website_url" />">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<mt:Var name="ec_website_url" />sample/">サンプル</a></li>
+                <li class="nav-item"><a class="nav-link" href="<mt:Link template="blog_index" />"><mt:Var name="ec_blog_contents_label" /></a></li>
+            </ul>
+        <!-- /#global-nav-collapse --></div>
+    </nav>
+<!-- /.global-nav --></div>
