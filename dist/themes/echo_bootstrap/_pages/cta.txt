@@ -1,0 +1,8 @@
+<div class="cta">
+    <div class="row">
+        <div class="col-md-8 col-md-push-2">
+            <p class="text-center display-1"><i class="fa fa-phone"></i> 03-0000-0000</p>
+            <p><a href="#" class="btn btn-lg btn-block btn-primary"><i class="fa fa-envelope"></i> メールでのお問い合わせ</a></p>
+        <!-- /.col-md-8 col-md-push-2--></div>
+    <!-- /.row --></div>
+<!-- /.cta --></div>

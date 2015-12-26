@@ -1,0 +1,399 @@
+<style>
+
+.row-demo .row-demo-item {
+  border: 1px solid #EE9999;
+  background-color: #FFF0F6;
+  text-align: center;
+  height: 5rem;
+  line-height: 5rem;
+  vertical-align: middle;
+}
+
+</style>
+
+<p>CSSフレームワーク「Bootstrap 4 Alpha」の、このテーマに対応しているコンポーネントのサンプルです。<br>
+詳しい利用方法は下記を参照ください。</p>
+
+<ul>
+<li><a href="http://v4-alpha.getbootstrap.com/components/buttons/" target="_blank">http://v4-alpha.getbootstrap.com/components/buttons/</a></li>
+</ul>
+
+<p class="text-danger">対応していないコンポーネントのデザインを変更する場合は、テーマファイルの /css/bootstrap-theme.min.css に追記してください。</p>
+
+
+<div id="index" class="row">
+  <div class="col-sm-6">
+    <div class="list-group m-b-md">
+      <a class="list-group-item js-scrollTo" href="#grid">Grid</a>
+      <a class="list-group-item js-scrollTo" href="#buttons">Buttons</a>
+      <a class="list-group-item js-scrollTo" href="#labels">Labels</a>
+      <a class="list-group-item js-scrollTo" href="#carousel">Carousel</a>
+      <a class="list-group-item js-scrollTo" href="#jumbotron">Jumbotron</a>
+      <a class="list-group-item js-scrollTo" href="#card">Card</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="list-group">
+      <a class="list-group-item js-scrollTo" href="#list_group">List Group</a>
+      <a class="list-group-item js-scrollTo" href="#alerts">Alerts</a>
+      <a class="list-group-item js-scrollTo" href="#tables">Tables</a>
+      <a class="list-group-item js-scrollTo" href="#forms">Forms</a>
+      <a class="list-group-item js-scrollTo" href="#tabs">Tabs</a>
+    </div>
+  </div>
+</div>
+
+
+<h2 id="grid">Grid</h2>
+
+<div class="row-demo">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="row-demo-item">One of three columns</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="row-demo-item">One of three columns</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="row-demo-item">One of three columns</div>
+    </div>
+  </div>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="buttons">Buttons</h2>
+
+<h3>btn</h3>
+<p>
+<a href="javascript: void(0);" class="btn btn-primary">Primary</a>
+<a href="javascript: void(0);" class="btn btn-secondary">Secondary</a>
+<a href="javascript: void(0);" class="btn btn-success">Success</a>
+<a href="javascript: void(0);" class="btn btn-info">Info</a>
+<a href="javascript: void(0);" class="btn btn-warning">Warning</a>
+<a href="javascript: void(0);" class="btn btn-danger">Danger</a>
+<a href="javascript: void(0);" class="btn btn-link">Link</a>
+</p>
+
+<h2>btn-outline</h2>
+<p>
+<a href="javascript: void(0);" class="btn btn-primary-outline">Primary</a>
+<a href="javascript: void(0);" class="btn btn-secondary-outline">Secondary</a>
+<a href="javascript: void(0);" class="btn btn-success-outline">Success</a>
+<a href="javascript: void(0);" class="btn btn-info-outline">Info</a>
+<a href="javascript: void(0);" class="btn btn-warning-outline">Warning</a>
+<a href="javascript: void(0);" class="btn btn-danger-outline">Danger</a>
+</p>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="labels">Labels</h2>
+
+<h3>label</h3>
+<p>
+<span class="label label-default">Default</span>
+<span class="label label-primary">Primary</span>
+<span class="label label-success">Success</span>
+<span class="label label-info">Info</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Danger</span>
+</p>
+
+<h3>label-pill</h3>
+<p>
+<span class="label label-pill label-default">Default</span>
+<span class="label label-pill label-primary">Primary</span>
+<span class="label label-pill label-success">Success</span>
+<span class="label label-pill label-info">Info</span>
+<span class="label label-pill label-warning">Warning</span>
+<span class="label label-pill label-danger">Danger</span>
+</p>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="carousel">Carousel</h2>
+
+<mt:Include module="パーツ-メイン画像" />
+<div id="carousel-example" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example" data-slide-to="1"></li>
+    <li data-target="#carousel-example" data-slide-to="2"></li>
+    <li data-target="#carousel-example" data-slide-to="3"></li>
+    <li data-target="#carousel-example" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img src="<mt:var name="ec_main_1_url" />" alt="">
+      <div class="carousel-caption">
+        <h3>Main Image 1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="<mt:var name="ec_main_2_url" />" alt="">
+      <div class="carousel-caption">
+        <h3>Main Image 2</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="<mt:var name="ec_main_3_url" />" alt="">
+      <div class="carousel-caption">
+        <h3>Main Image 3</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="<mt:var name="ec_main_4_url" />" alt="">
+      <div class="carousel-caption">
+        <h3>Main Image 4</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="<mt:var name="ec_main_5_url" />" alt="">
+      <div class="carousel-caption">
+        <h3>Main Image 5</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#carousel-example" role="button" data-slide="prev">
+    <span class="icon-prev" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example" role="button" data-slide="next">
+    <span class="icon-next" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="jumbotron">Jumbotron</h2>
+
+<div class="jumbotron">
+  <h1 class="display-3">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="m-y-2">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="card">Card</h2>
+
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Card title</h4>
+  </div>
+  <div class="card-block">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <div class="card-footer">
+    <a href="#" class="btn btn-secondary">Button</a>
+  </div>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+
+<h2 id="list_group">List Group</h2>
+
+<div class="list-group m-b-lg">
+  <a href="javascript: void(0);" class="list-group-item">Some quick example</a>
+  <a href="javascript: void(0);" class="list-group-item active">text to build on (active)</a>
+  <a href="javascript: void(0);" class="list-group-item">the card title and</a>
+  <a href="javascript: void(0);" class="list-group-item">make up the bulk</a>
+  <a href="javascript: void(0);" class="list-group-item">of the card's content</a>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="alerts">Alerts</h2>
+
+<div class="alert alert-success" role="alert">
+  <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+</div>
+<div class="alert alert-info" role="alert">
+  <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+</div>
+<div class="alert alert-warning" role="alert">
+  <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
+</div>
+<div class="alert alert-danger" role="alert">
+  <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="tables">Tables</h2>
+
+<table class="table">
+  <caption>table</caption>
+  <thead>
+    <tr>
+      <th>thead/th</th>
+      <th>thead/th</th>
+      <th>thead/th</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>tbody/th</th>
+      <td>tbody/td</td>
+      <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+    </tr>
+    <tr>
+      <th>tbody/th</th>
+      <td>tbody/td</td>
+      <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+    </tr>
+    <tr>
+      <th>tbody/th</th>
+      <td>tbody/td</td>
+      <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-borderd">
+  <caption>table-borderd</caption>
+  <thead>
+    <tr>
+      <th>thead/th</th>
+      <th>thead/th</th>
+      <th>thead/th</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>tbody/th</th>
+      <td>tbody/td</td>
+      <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+    </tr>
+    <tr>
+      <th>tbody/th</th>
+      <td>tbody/td</td>
+      <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+    </tr>
+    <tr>
+      <th>tbody/th</th>
+      <td>tbody/td</td>
+      <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="forms">Forms</h2>
+
+<form>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2">Radios</label>
+    <div class="col-sm-10">
+      <div class="radio">
+        <label>
+          <input type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+          Option one is this and that&mdash;be sure to include why it's great
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="gridRadios" id="gridRadios2" value="option2">
+          Option two can be something else and selecting it will deselect option one
+        </label>
+      </div>
+      <div class="radio disabled">
+        <label>
+          <input type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+          Option three is disabled
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2">Checkbox</label>
+    <div class="col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Check me out
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-secondary">Sign in</button>
+    </div>
+  </div>
+</form>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="tabs">Tabs</h2>
+
+<ul id="tab-example" class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#tab01">tab01</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#tab02">tab02</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#tab03">tab03</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="tab01" role="tabpanel">
+    <p>1) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+  </div>
+  <div class="tab-pane fade" id="tab02" role="tabpanel">
+    <p>2) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+  </div>
+  <div class="tab-pane fade" id="tab03" role="tabpanel">
+    <p>3) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, molestias. Sequi non, reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure, ipsum, error distinctio ea, quibusdam necessitatibus.</p>
+  </div>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>

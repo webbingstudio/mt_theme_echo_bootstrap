@@ -1,0 +1,73 @@
+<mt:Include module="パーツ-メイン画像" />
+
+<div id="mainvisual-01" class="hero">
+    <div class="hero-bg" style="background-image: url(<mt:var name="ec_main_1_url" />);"></div>
+    <div class="hero-contents">
+        <h1 class="hero-logo"><img src="<mt:Var name="ec_static_path" />images/logo.svg" width="192" height="60" alt="echo"></h1>
+        <p class="hero-title">echo Bootstrap for Movabletype</p>
+        <p class="hero-subtitle">プロ製作者のためのテーマ</p>
+    <!-- /.hero-contents --></div>
+    <div class="hero-footer">
+        <a href="#mainvisual-02" class="js-scrollTo btn btn-primary btn-round"><i class="fa fa-chevron-down"></i><span class="sr-only">↓</span></a>
+    <!-- /.hero-footer --></div>
+<!-- /.hero --></div>
+
+<div id="mainvisual-02" class="introduction">
+    <div class="introduction-bg" style="background-image: url(<mt:var name="ec_main_2_url" />);"></div>
+    <div class="introduction-contents">
+
+        <h2 class="introduction-title">フレームワークの条件</h2>
+
+        <p>CMSテーマは世に無数にありながら、制作現場で使えるものが少ないのは、なぜだろう。<br>
+「フレームワーク」の条件とは何か。</p>
+
+        <p>機能を厳選すること。<br>装飾と構造を分離すること。<br>読みやすいコードを追求すること。<br>ドキュメントを完備すること。<br>各CMSのセオリーを守り、欠点を補うこと。<br>各パーツをスニペットとして再生できること。</p>
+
+        <p>フレームワークを意識したプレミアムテーマ、「echo」。<br>コンテンツの未来を見据える、プロフェッショナルのために。</p>
+
+    <!-- /.introduction-contents --></div>
+<!-- /.introduction --></div>
+
+<div class="feature section section-02">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-block">
+                        <h2 class="card-title">メイン画像3枚目</h2>
+                    </div>
+                    <img class="img-responsive" src="<mt:var name="ec_main_3_url" />" alt="">
+                    <div class="card-block">
+                        <p class="card-text">メイン画像はカルーセルなど、自由な体裁で表示できます。</p>
+                    </div>
+                </div>
+            <!-- /.col-sm-12 col-md-4 col-lg-4 --></div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-block">
+                        <h2 class="card-title">メイン画像4枚目</h2>
+                    </div>
+                    <img class="img-responsive" src="<mt:var name="ec_main_4_url" />" alt="">
+                    <div class="card-block">
+                        <p class="card-text">トップページ以外に一枚ずつ表示することもできます。</p>
+                    </div>
+                </div>
+            <!-- /.col-sm-12 col-md-4 col-lg-4 --></div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-block">
+                        <h2 class="card-title">メイン画像5枚目</h2>
+                    </div>
+                    <img class="img-responsive" src="<mt:var name="ec_main_5_url" />" alt="">
+                    <div class="card-block">
+                        <p class="card-text">「&#64;home」タグを付けたページが、ホームの前半に表示されます。</p>
+                    </div>
+                </div>
+            <!-- /.col-sm-12 col-md-4 col-lg-4 --></div>
+
+        <!-- /.row --></div>
+    <!-- /.container --></div>
+<!-- /.feature section section-02 --></div>

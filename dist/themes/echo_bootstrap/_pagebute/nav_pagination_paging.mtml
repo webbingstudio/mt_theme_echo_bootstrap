@@ -1,0 +1,52 @@
+<mt:Ignore>
+# =======================
+# 
+# ナビ-ページネーション
+# 
+# 必須プラグイン: PageBute
+# 
+# =======================
+</mt:Ignore>
+
+<mt:If tag="Pagination">
+<mt:Pagination>
+
+<mt:PaginationHeader>
+<nav class="pagination-nav">
+    <ul class="pagination">
+        <mt:IfPaginationPrev>
+        <li><a href="<mt:PaginationPrev />" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">前のページ</span>
+        </a></li>
+        <mt:Else>
+        <li class="disabled"><a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">前のページ</span>
+        </a></li>
+        </mt:IfPaginationPrev>
+</mt:PaginationHeader>
+
+<mt:IfPaginationCurrent>
+        <li class="active"><a href="#"><mt:PaginationLink element="number" /><span class="sr-only">(現在のページ)</span></a></li>
+<mt:Else>
+        <li><a href="<mt:PaginationLink />"><mt:PaginationLink element="number" /></a></li>
+</mt:IfPaginationCurrent>
+
+<mt:PaginationFooter>
+        <mt:IfPaginationNext>
+        <li><a href="<mt:PaginationNext />" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">次のページ</span>
+        </a></li>
+        <mt:Else>
+        <li class="disabled"><a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">次のページ</span>
+        </a></li>
+        </mt:IfPaginationNext>
+    </ul>
+</nav>
+</mt:PaginationFooter>
+</mt:Pagination>
+</mt:If>

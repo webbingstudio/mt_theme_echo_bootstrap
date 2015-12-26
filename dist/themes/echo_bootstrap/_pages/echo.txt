@@ -1,0 +1,327 @@
+<p>「echo」の追加コンポーネントのサンプルです。</p>
+
+<div id="index" class="row">
+  <div class="col-sm-6">
+    <div class="list-group m-b-md">
+      <a class="list-group-item js-scrollTo" href="#btn-inverse">btn-inverse</a>
+      <a class="list-group-item js-scrollTo" href="#btn-round">btn-round</a>
+      <a class="list-group-item js-scrollTo" href="#card-item">card-item</a>
+      <a class="list-group-item js-scrollTo" href="#cover">cover</a>
+      <a class="list-group-item js-scrollTo" href="#headline">headline</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="list-group">
+      <a class="list-group-item js-scrollTo" href="#hero">hero</a>
+      <a class="list-group-item js-scrollTo" href="#introduction">introduction</a>
+      <a class="list-group-item js-scrollTo" href="#message">message</a>
+      <a class="list-group-item js-scrollTo" href="#list-hierarchy">list-hierarchy</a>
+      <a class="list-group-item js-scrollTo" href="#table-fixed">table-fixed</a>
+    </div>
+  </div>
+</div>
+
+<mt:Include module="パーツ-メイン画像" />
+
+
+<h2 id="btn-inverse">btn-inverse</h2>
+
+<p>ボタンが反転します。</p>
+
+<div class="bg-inverse p-x-md p-y-md">
+  <p><a href="#" class="btn btn-sm btn-inverse">inverse</a>　<a href="#" class="btn btn-inverse">inverse</a>　<a href="#" class="btn btn-lg btn-inverse">inverse</a></p>
+  <p><a href="#" class="btn btn-block btn-inverse">inverse</a></p>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="btn-round">btn-round</h2>
+
+<p>丸いボタンアイコンです。ホームのメインビジュアルの下、ヘッダのSNSボタンで使用しています。中のアイコンの位置は調整が必要となることがあります。</p>
+
+<ul class="list-inline lead">
+  <li><a href="javascript: vold(0);" class="btn btn-primary btn-round"><i class="fa fa-plane"></i><span class="sr-only">飛行機</span></a></li>
+  <li><a href="javascript: vold(0);" class="btn btn-secondary btn-round"><i class="fa fa-star"></i><span class="sr-only">星</span></a></li>
+  <li><a href="javascript: vold(0);" class="btn btn-success btn-round"><i class="fa fa-car"></i><span class="sr-only">車</span></a></li>
+  <li><a href="javascript: vold(0);" class="btn btn-info btn-round"><i class="fa fa-user"></i><span class="sr-only">ユーザー</span></a></li>
+  <li><a href="javascript: vold(0);" class="btn btn-warning btn-round"><i class="fa fa-book"></i><span class="sr-only">本</span></a></li>
+  <li><a href="javascript: vold(0);" class="btn btn-danger btn-round"><i class="fa fa-rocket"></i><span class="sr-only">ロケット</span></a></li>
+</ul>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="card-item">card-item</h2>
+
+<p>BootstrapのCardの、全体がリンク範囲になります。記事一覧の「card」コンポーネントで使用しています。</p>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-item">
+      <a href="javascript: void(0);">
+        <img class="card-img-top img-responsive" src="<mt:var name="ec_main_4_url" />" alt="" />
+        <div class="card-block">
+          <h4 class="card-title">Linked card item</h4>
+          <p class="card-subtitle">Support card subtitle</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card card-item">
+      <span>
+        <img class="card-img-top img-responsive" src="<mt:var name="ec_main_5_url" />" alt="" />
+        <div class="card-block">
+          <h4 class="card-title">Unlinked card item</h4>
+          <p class="card-subtitle">Support card subtitle</p>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="cover">cover</h2>
+
+<p>要素内に指定した画像を背景として敷き詰めます。補助クラスを追加すると位置が変わります。デフォルトは「縦・横とも中央」です。</p>
+
+<div class="m-y-md cover cover-t-c" style="width: 100%; height: 100px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+<p class="m-b-md">cover cover-t-c</p>
+
+<div class="m-y-md cover" style="width: 100%; height: 100px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+<p class="m-b-md">cover</p>
+
+<div class="m-y-md cover cover-b-c" style="width: 100%; height: 100px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+<p class="m-b-md">cover cover-b-c</p>
+
+
+<div class="row">
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-t-l" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-t-l</p>
+
+  </div>
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-t-c" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-t-c</p>
+
+  </div>
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-t-r" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-t-r</p>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-c-l" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-c-l</p>
+
+  </div>
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover</p>
+
+  </div>
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-c-r" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-c-r</p>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-b-l" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-b-l</p>
+
+  </div>
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-b-c" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-b-c</p>
+
+  </div>
+  <div class="col-xs-4">
+
+    <div class="m-y-md cover cover-b-r" style="width: 100%; height: 320px; background-image: url(<mt:var name="ec_main_3_url" />);"></div>
+    <p class="m-b-md">cover cover-b-r</p>
+
+  </div>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="headline">headline</h2>
+
+<p>ワイド画面でインラインになるリストを生成します。記事新着の「headline」コンポーネントで使用しています。</p>
+
+<div class="headline">
+    <a href="javascript: void(0);">
+        <p class="headline-date">2015-12-31</p>
+        <h3 class="headline-title">Lorem ipsum dolor sit</h3>
+    </a>
+<!-- /.headline --></div>
+<div class="headline">
+    <a href="javascript: void(0);">
+        <p class="headline-date">2015-12-31</p>
+        <h3 class="headline-title">amet consectetur adipisicing elit. Omnis, molestias</h3>
+    </a>
+<!-- /.headline --></div>
+<div class="headline">
+    <a href="javascript: void(0);">
+        <p class="headline-date">2015-12-31</p>
+        <h3 class="headline-title">Sequi non reprehenderit aspernatur! Perferendis quia odit voluptatum corrupti velit at eius vel iure</h3>
+    </a>
+<!-- /.headline --></div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="hero">hero</h2>
+
+<p>ロゴとメインビジュアルを表示します。</p>
+
+<div id="mainvisual-01" class="hero">
+    <div class="hero-bg" style="background-image: url(<mt:var name="ec_main_1_url" />);"></div>
+    <div class="hero-contents">
+        <h1 class="hero-logo"><img src="<mt:Var name="ec_static_path" />images/logo.svg" width="192" height="60" alt="echo"></h1>
+        <p class="hero-title">echo Bootstrap for Movabletype</p>
+        <p class="hero-subtitle">プロ製作者のためのテーマ</p>
+    <!-- /.hero-contents --></div>
+    <div class="hero-footer">
+        <a href="#mainvisual-02" class="js-scrollTo btn btn-primary btn-round"><i class="fa fa-chevron-down"></i><span class="sr-only">↓</span></a>
+    <!-- /.hero-footer --></div>
+<!-- /.hero --></div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="introduction">introduction</h2>
+
+<p>メインビジュアルを背景に、長めの文章を表示します。モバイル端末では体裁が変わります。メイン画像は3:2くらいの比率を想定しています。</p>
+
+<div id="mainvisual-02" class="introduction">
+    <div class="introduction-bg" style="background-image: url(<mt:var name="ec_main_2_url" />);"></div>
+    <div class="introduction-contents">
+
+        <h2 class="introduction-title">フレームワークの条件</h2>
+
+        <p>CMSテーマは世に無数にありながら、制作現場で使えるものが少ないのは、なぜだろう。<br>
+「フレームワーク」の条件とは何か。</p>
+
+        <p>機能を厳選すること。<br>装飾と構造を分離すること。<br>読みやすいコードを追求すること。<br>ドキュメントを完備すること。<br>各CMSのセオリーを守り、欠点を補うこと。<br>各パーツをスニペットとして再生できること。</p>
+
+        <p>フレームワークを意識したプレミアムテーマ、「echo」。<br>コンテンツの未来を見据える、プロフェッショナルのために。</p>
+
+    <!-- /.introduction-contents --></div>
+<!-- /.introduction --></div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="message">message</h2>
+
+<p>長めのメッセージを表示します。ダイナミック・パブリッシング・エラーのメッセージで使用しています。</p>
+
+<div class="message">
+    <h2 class="message-title">ページが見つかりません</h2>
+    <p>お探しのアドレスには、コンテンツがありません。<br>
+    移動、もしくは削除された可能性があります。</p>
+    <p>お手数ですが、サイト内検索をご利用いただくか、トップページから目的のコンテンツをお探しください。</p>
+    <div class="text-center">
+        <p><a href="javascript: void(0);" class="btn btn-secondary">echo Bootstrap トップページ</a></p>
+    </div>
+<!-- /.message --></div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="list-hierarchy">list-hierarchy</h2>
+
+<p>階層のあるリストグループを生成します。カテゴリーアーカイブウィジェットで使用しています。</p>
+
+<div class="list-hierarchy">
+  <ul>
+    <li><a href="#">List Item 1</a></li>
+    <li><a href="#">List Item 2</a>
+      <ul>
+        <li><a href="#">List Item 2-1</a></li>
+      </ul>
+    </li>
+    <li><a href="#">List Item 3</a>
+      <ul>
+        <li><a href="#">List Item 3-1</a>
+          <ul>
+            <li><a href="#">List Item 3-1-1</a></li>
+            <li><a href="#">List Item 3-1-2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">List Item 3-2</a></li>
+        <li><a href="#" class="active">List Item 3-3 (active)</a></li>
+        <li><a href="#">List Item 3-4</a></li>
+      </ul>
+    </li>
+    <li><a href="#">List Item 4</a></li>
+    <li><a href="#">List Item 5</a></li>
+  </ul>
+<!-- /.list-group-hierarchy --></div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
+
+
+
+<h2 id="table-fixed">table-fixed</h2>
+
+<p>モバイル端末で横スクロールが表示される表です。改行したくないときに使用します。</p>
+
+<div class="table-fixed">
+  <table class="table">
+    <caption>table-fixed</caption>
+    <thead>
+      <tr>
+        <th>thead/th</th>
+        <th>thead/th</th>
+        <th>thead/th</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>tbody/th</th>
+        <td>tbody/td</td>
+        <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+      </tr>
+      <tr>
+        <th>tbody/th</th>
+        <td>tbody/td</td>
+        <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+      </tr>
+      <tr>
+        <th>tbody/th</th>
+        <td>tbody/td</td>
+        <td>tbody/td longlonglonglonglonglonglonglonglonglonglonglonglonglong</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="table-fixed-guide">&lt;&lt;&nbsp;&nbsp;スクロールできます&nbsp;&nbsp;&gt;&gt;</div>
+</div>
+
+<p class="m-t-md"><a href="#index" class="btn btn-secondary js-scrollTo"><i class="fa fa-chevron-up"></i> Back to Index</a></p>
