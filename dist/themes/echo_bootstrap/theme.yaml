@@ -1,7 +1,7 @@
 id: echo_bootstrap
 label: 'echo Bootstrap'
 name: 'echo Bootstrap'
-version: 1.0.0
+version: 1.0.2
 author_link: http://echo-mt.cms-skill.net/
 author_name: WebbingStudio
 class: 'blog'
