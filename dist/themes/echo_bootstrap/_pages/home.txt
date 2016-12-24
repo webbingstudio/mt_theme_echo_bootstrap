@@ -16,14 +16,14 @@
     <div class="introduction-bg" style="background-image: url(<mt:var name="ec_main_2_url" />);"></div>
     <div class="introduction-contents">
 
-        <h2 class="introduction-title">フレームワークの条件</h2>
-
-        <p>CMSテーマは世に無数にありながら、制作現場で使えるものが少ないのは、なぜだろう。<br>
-「フレームワーク」の条件とは何か。</p>
-
-        <p>機能を厳選すること。<br>装飾と構造を分離すること。<br>読みやすいコードを追求すること。<br>ドキュメントを完備すること。<br>各CMSのセオリーを守り、欠点を補うこと。<br>各パーツをスニペットとして再生できること。</p>
-
-        <p>フレームワークを意識したプレミアムテーマ、「echo」。<br>コンテンツの未来を見据える、プロフェッショナルのために。</p>
+        <h2 class="introduction-title">現場が、本当に求める設計を</h2>
+        <p>効率を重視して既存テーマを採用したつもりが、かえって制作に手間取ってしまった…<br>
+        そんな経験はありませんか？</p>
+        <p>一般のテーマは、Web制作の経験が少ない人を想定しています。依頼されたサイトならではの要件に対応する高度な制作現場では、その親切さが冗長・不要となることも少なくありません。</p>
+        <p>「echo」は、日本の制作現場を想定したプレミアムテーマです。<br>
+        CMS各ブランドごとに、最も多く求められる機能・望ましいファイル構成を考慮して設計しています。<br>
+        テーマ本体・マニュアルだけでなく、Sassなどのコンパイル元ファイル、高度なカスタマイズの際に必要とされるカスタムフィールド・変数一覧も完備しました。</p>
+        <p>制作の足場、本格的な学習素材としてご利用ください。</p>
 
     <!-- /.introduction-contents --></div>
 <!-- /.introduction --></div>
@@ -35,11 +35,11 @@
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="card">
                     <div class="card-block">
-                        <h2 class="card-title">メイン画像3枚目</h2>
+                        <h2 class="card-title">自由なトップページ</h2>
                     </div>
                     <img class="img-responsive" src="<mt:var name="ec_main_3_url" />" alt="">
                     <div class="card-block">
-                        <p class="card-text">メイン画像はカルーセルなど、自由な体裁で表示できます。</p>
+                        <p class="card-text">このトップページは一例にすぎません。サイトに合わせて自由に編集できます。</p>
                     </div>
                 </div>
             <!-- /.col-sm-12 col-md-4 col-lg-4 --></div>
@@ -47,11 +47,11 @@
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="card">
                     <div class="card-block">
-                        <h2 class="card-title">メイン画像4枚目</h2>
+                        <h2 class="card-title">多彩な変数群</h2>
                     </div>
                     <img class="img-responsive" src="<mt:var name="ec_main_4_url" />" alt="">
                     <div class="card-block">
-                        <p class="card-text">トップページ以外に一枚ずつ表示することもできます。</p>
+                        <p class="card-text">テンプレート内で現在のページ情報を参照できる変数を、豊富に用意しています。</p>
                     </div>
                 </div>
             <!-- /.col-sm-12 col-md-4 col-lg-4 --></div>
@@ -59,11 +59,11 @@
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="card">
                     <div class="card-block">
-                        <h2 class="card-title">メイン画像5枚目</h2>
+                        <h2 class="card-title">bootstrapベース</h2>
                     </div>
                     <img class="img-responsive" src="<mt:var name="ec_main_5_url" />" alt="">
                     <div class="card-block">
-                        <p class="card-text">「&#64;home」タグを付けたページが、ホームの前半に表示されます。</p>
+                        <p class="card-text">グリッドデザインが柔軟な「bootstrap4」をベースに、コンポーネントを多数追加しています。</p>
                     </div>
                 </div>
             <!-- /.col-sm-12 col-md-4 col-lg-4 --></div>
