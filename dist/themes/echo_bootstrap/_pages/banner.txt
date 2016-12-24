@@ -2,8 +2,6 @@
 
         <p><a href="http://webbingstudio.com/" target="_blank"><img src="<mt:Var name="ec_static_path" />images/bnr_webbingstudio.png" alt="CMSのウェビングスタジオ" width="300" height="150" class="img-responsive"></a></p>
 
-        <p><a href="http://cms-skill.com/" target="_blank"><img src="<mt:Var name="ec_static_path" />images/bnr_cm3s.png" alt="CM3S CMSスキルストア" width="300" height="150" class="img-responsive"></a></p>
-
         <p><a href="http://www.sixapart.jp/movabletype/" target="_blank"><img src="<mt:Var name="ec_static_path" />images/bnr_mt.png" alt="Powered by Movable Type" width="300" height="150" class="img-responsive"></a></p>
 
 <!-- /.widget --></div>
