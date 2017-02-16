@@ -21,7 +21,7 @@ echoシリーズ ポータルサイト
 [http://cms-skill.com/echo/](http://cms-skill.com/echo/)
 
 デモサイト  
-[http://cms-skill.com/echo_zero_demo/](http://cms-skill.com/echo_zero_demo/)
+[http://echo-mt.cms-skill.net/](http://echo-mt.cms-skill.net/)
 
 ## ライセンス
 
